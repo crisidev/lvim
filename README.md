@@ -4,6 +4,10 @@ Personal Neovim configuration based on LunarVim.
 
 Take what you need, it also comes warrant free 😊
 
+## Look and feel
+
+![Rust](rust.png)
+
 ## Info
 
 * My config is heavy and extremely personalized for my needs and it will probably not work for

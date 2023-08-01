@@ -242,10 +242,7 @@ M.config = function()
         ------------------------------------------------------------------------------
         -- Cmp for command line
         -- Cmp for emojis..
-        {
-            "hrsh7th/cmp-emoji",
-            lazy = true,
-        },
+        { "hrsh7th/cmp-emoji" },
         {
             "uga-rosa/cmp-dictionary",
             config = function()
@@ -257,14 +254,12 @@ M.config = function()
                     },
                 }
             end,
-            lazy = true,
             enabled = lvim.builtin.cmp.dictionary.enable,
         },
         -- Cmp for github/gitlab issues
         {
             "petertriho/cmp-git",
             dependencies = "nvim-lua/plenary.nvim",
-            lazy = true,
             config = function()
                 require("cmp_git").setup()
             end,
