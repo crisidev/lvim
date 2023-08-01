@@ -58,8 +58,8 @@ M.config = function()
     lvim.builtin.bigfile.active = true
     -- Scala
     lvim.builtin.metals = { active = false }
-    -- Hop
-    lvim.builtin.hop = { active = false }
+    -- Hop / Flash
+    lvim.builtin.motion_provider = "none"
     -- Ufo
     lvim.builtin.ufo = { active = true }
 

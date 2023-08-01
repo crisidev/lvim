@@ -568,10 +568,16 @@ M.config = function()
             event = "VeryLazy",
             cmd = { "HopChar1CurrentLineAC", "HopChar1CurrentLineBC", "HopChar2MW", "HopWordMW" },
             config = function()
-                require("hop").setup()
-                require("user.keys").hop_keys()
+                require("user.hop").config()
             end,
-            enabled = lvim.builtin.hop.active,
+            enabled = lvim.builtin.motion_provider == "hop",
+        },
+        -- Flash
+        {
+            "folke/flash.nvim",
+            event = "VeryLazy",
+            keys = require("user.flash").keys,
+            enabled = lvim.builtin.motion_provider == "flash",
         },
         -- Matchup
         {
