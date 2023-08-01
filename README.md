@@ -6,10 +6,10 @@ Take what you need, it also comes warrant free 😊
 
 ## Info
 
-* I am usually a couple of weeks behind Neovim HEAD.
-- My config is heavily based on the great work of [abzcoding](https://github.com/abzcoding/lvim)
-* This config will probably not work for you out of the box, use it as an
-inspiration.
+* My config is heavy and extremely personalized for my needs and it will probably not work for
+  you out of the box.. **Take it as an inspiration**.
+* I am usually up to date with Neovim HEAD.
+* My config is heavily based on the great work of [abzcoding](https://github.com/abzcoding/lvim).
 
 ## Installation
 
