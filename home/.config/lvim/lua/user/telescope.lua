@@ -327,6 +327,7 @@ M.config = function()
     -- Telescope
     local icons = require("user.icons").icons
     lvim.builtin.telescope.max_path_length = 5
+    lvim.builtin.telescope.defaults.initial_mode = "insert"
     lvim.builtin.telescope.defaults.dynamic_preview_title = true
     lvim.builtin.telescope.defaults.layout_config = M.layout_config()
     lvim.builtin.telescope.defaults.path_display = M.path_display()
