@@ -1,6 +1,7 @@
 local M = {}
 
 M.icons = {
+    vim = " ",
     error = " ",
     warn = " ",
     info = "󰗖 ",
