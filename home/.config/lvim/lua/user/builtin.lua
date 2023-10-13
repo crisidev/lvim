@@ -35,10 +35,17 @@ M.config = function()
     -- LSP Signature help
     lvim.builtin.lsp_signature_help = { active = true }
     -- Atomatic inlay hints
-    lvim.builtin.automatic_inlay_hints = {
-        active = true,
-        ft = { "rust", "lua", "java", "typescript", "go", "c", "cpp" },
-    }
+    if vim.fn.has "nvim-0.10" == 1 then
+        lvim.builtin.automatic_inlay_hints = {
+            active = true,
+            ft = { "rust", "lua", "java", "typescript", "go", "c", "cpp" },
+        }
+    else
+        lvim.builtin.automatic_inlay_hints = {
+            active = false,
+            ft = { "rust", "lua", "java", "typescript", "go", "c", "cpp" },
+        }
+    end
     -- Lir
     lvim.builtin.lir.active = false
     -- Breadcrumbs
