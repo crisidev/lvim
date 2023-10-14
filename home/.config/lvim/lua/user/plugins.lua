@@ -610,15 +610,7 @@ M.config = function()
                 require("user.debugprint").config()
             end,
         },
-        -- Ufo folding
-        {
-            "kevinhwang91/nvim-ufo",
-            dependencies = "kevinhwang91/promise-async",
-            config = function()
-                require("user.ufo").config()
-            end,
-            enabled = lvim.builtin.ufo.active,
-        },
+        -- Status column
         {
             "luukvbaal/statuscol.nvim",
             config = function()

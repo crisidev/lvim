@@ -189,21 +189,12 @@ M.config = function()
     vim.g.loaded_ruby_provider = 0
 
     -- Folding
-    if lvim.builtin.ufo.active then
-        vim.o.foldcolumn = "1" -- Show the fold column
-        vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-        vim.o.foldlevelstart = 99
-        vim.o.foldenable = true
-    else
-        vim.o.foldcolumn = "1" -- Show the fold column
-        vim.o.foldmethod = "expr"
-        vim.o.foldexpr = "nvim_treesitter#foldexpr()"
-        vim.o.foldlevel = 4
-        vim.o.foldtext =
-            [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
-        vim.o.foldnestmax = 3
-        vim.o.foldminlines = 1
-    end
+    vim.o.foldcolumn = "1" -- Show the fold column
+    vim.o.foldmethod = "expr"
+    vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+    vim.o.foldlevel = 4
+    vim.o.foldnestmax = 3
+    vim.o.foldminlines = 1
 
     -- Conceal
     -- vim.o.conceallevel = 2

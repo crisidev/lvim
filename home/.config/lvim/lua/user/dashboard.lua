@@ -80,10 +80,10 @@ M.config = function()
             .. vim.version().minor
             .. "."
             .. vim.version().patch
-            .. "     │"
+            .. "    │"
     )
     local lvim_version =
-        text("│  " .. icons.moon .. " LunarVim " .. require("lvim.utils.git").get_lvim_version() .. " │")
+        text("│  " .. icons.moon .. " LunarVim " .. require("lvim.utils.git").get_lvim_version():gsub("-dirty", "", 1) .. " │")
     local plugin_count = text("│  " .. kind.Module .. plugins .. " plugins in total     │")
     local border_lower =
         text "╰─────────────────────────────╯"

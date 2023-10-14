@@ -67,8 +67,6 @@ M.config = function()
     lvim.builtin.metals = { active = false }
     -- Hop / Flash
     lvim.builtin.motion_provider = "none"
-    -- Ufo
-    lvim.builtin.ufo = { active = true }
 
     -- Mason
     lvim.builtin.mason.ui.icons = require("user.icons").mason
