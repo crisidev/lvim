@@ -9,7 +9,7 @@ M.config = function()
     dressing.setup {
         input = {
             get_config = function()
-                if vim.api.nvim_buf_get_option(0, "filetype") == "neo-tree" then
+                if vim.api.nvim_get_option_value("filetype", { buf = 0 }) == "neo-tree" then
                     return { enabled = false }
                 end
             end,

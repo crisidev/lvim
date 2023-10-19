@@ -85,7 +85,7 @@ M.config = function()
 
     vim.opt.shortmess = {
         t = true, -- truncate file messages at start
-        A = false, -- ignore annoying swap file messages
+        A = true, -- ignore annoying swap file messages
         o = true, -- file-read message overwrites previous
         O = true, -- file-read message overwrites previous
         T = true, -- truncate non-file messages in middle

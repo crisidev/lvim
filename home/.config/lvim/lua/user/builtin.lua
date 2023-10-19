@@ -16,6 +16,8 @@ M.config = function()
     lvim.reload_config_on_save = true
     lvim.debug = false
 
+    -- Telescope
+    lvim.builtin.telescope.active = true
     -- Tree support
     lvim.builtin.tree_provider = "neo-tree"
     lvim.builtin.nvimtree.active = false

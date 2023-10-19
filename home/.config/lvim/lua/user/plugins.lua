@@ -505,7 +505,7 @@ M.config = function()
         -- Visual multi
         {
             "mg979/vim-visual-multi",
-            config = function()
+            init = function()
                 vim.cmd [[
                     let g:VM_maps = {}
                     let g:VM_maps['Find Under'] = '<C-l>'
@@ -615,6 +615,26 @@ M.config = function()
             "luukvbaal/statuscol.nvim",
             config = function()
                 require("user.statuscol").config()
+            end,
+        },
+        -- FZF searches
+        {
+            "ibhagwan/fzf-lua",
+            config = function()
+                -- calling `setup` is optional for customization
+                local ff = require "user.fzf"
+                require("fzf-lua").setup(vim.tbl_deep_extend("keep", vim.deepcopy(ff.active_profile), ff.default_opts))
+            end,
+            enabled = not lvim.builtin.telescope.active,
+        },
+        -- Local codellama using llama.cpp
+        {
+            "gsuuon/llm.nvim",
+            config = function()
+                local codellama = require "llm.providers.codellama"
+                require("llm").setup {
+                    default_prompt = codellama.default_prompt,
+                }
             end,
         },
     }

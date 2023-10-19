@@ -6,6 +6,7 @@ local function truncate(str, max_len)
 end
 
 local function render(props)
+    local icons = require("user.icons").icons
     local fmt = string.format
     local devicons = require "nvim-web-devicons"
     local bufname = vim.api.nvim_buf_get_name(props.buf)
@@ -22,7 +23,7 @@ local function render(props)
         if next(parts, idx) then
             vim.list_extend(result, {
                 { truncate(part, 20) },
-                { fmt(" %s ", ""), guifg = directory_color },
+                { fmt(" %s ", icons.right), guifg = directory_color },
             })
         else
             table.insert(result, { part, gui = "bold", guisp = color })

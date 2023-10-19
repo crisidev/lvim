@@ -1,7 +1,10 @@
 {
-  "Lua.hint.enable": true,
-  "Lua.hint.paramName": "All",
-  "Lua.hint.paramType": false,
-  "Lua.hint.setType": false,
-  "Lua.hint.arrayIndex": "Disable"
+    "Lua.hint.enable": true,
+    "Lua.hint.paramName": "All",
+    "Lua.hint.paramType": false,
+    "Lua.hint.setType": false,
+    "Lua.hint.arrayIndex": "Disable",
+    "Lua.workspace.library": [
+        "/Users/matteobigoi/.hammerspoon/Spoons/EmmyLua.spoon/annotations"
+    ]
 }

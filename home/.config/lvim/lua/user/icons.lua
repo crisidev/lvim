@@ -69,7 +69,6 @@ M.icons = {
     lock = "",
     presence_on = "󰅠 ",
     presence_off = " ",
-    right = " ",
     caret = "-",
     flash = " ",
     world = " ",
@@ -94,6 +93,10 @@ M.icons = {
     mind_notes = " ",
     button_off = " ",
     button_on = " ",
+    up = "",
+    down = "",
+    right = "",
+    left = ""
 }
 
 M.todo_comments = {

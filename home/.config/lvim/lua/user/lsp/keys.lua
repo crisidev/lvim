@@ -158,6 +158,15 @@ M.lsp_normal_keys = function()
                 T = { "<cmd>OverseerRun<cr>", "Run task" },
                 C = { "<cmd>OverseerRunCmd<cr>", "Run task with Cmd" },
             },
+            -- Llm
+            L = {
+                name = icons.magic .. "Llm",
+                r = { "<cmd>Llm<cr>", "Run" },
+                s = { "<cmd>LlmSelect<cr>", "Select" },
+                d = { "<cmd>LlmDelete<cr>", "Delete" },
+                c = { "<cmd>LlmCancel<cr>", "Cancel" },
+                S = { "<cmd>LlmShoe<cr>", "Show" },
+            },
         },
     }
 
