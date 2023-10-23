@@ -338,7 +338,7 @@ M.config = function()
         preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
     }
     lvim.builtin.telescope.theme = "ivy"
-    lvim.builtin.telescope.defaults.selection_caret = icons.right
+    lvim.builtin.telescope.defaults.selection_caret = icons.right .. " "
     lvim.builtin.telescope.defaults.cache_picker = { num_pickers = 5 }
     lvim.builtin.telescope.defaults.layout_strategy = "horizontal"
     lvim.builtin.telescope.defaults.color_devicons = true
