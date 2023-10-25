@@ -83,9 +83,10 @@ M.config = function()
     -- Type of clipboard
     vim.opt.clipboard = "unnamedplus"
 
+    vim.opt.shortmess:append { t = true }
     vim.opt.shortmess = {
         t = true, -- truncate file messages at start
-        A = true, -- ignore annoying swap file messages
+        A = false, -- ignore annoying swap file messages
         o = true, -- file-read message overwrites previous
         O = true, -- file-read message overwrites previous
         T = true, -- truncate non-file messages in middle
@@ -189,7 +190,11 @@ M.config = function()
     vim.g.loaded_ruby_provider = 0
 
     -- Folding
-    vim.o.foldcolumn = "1" -- Show the fold column
+    if lvim.builtin.statuscol.active then
+        vim.o.foldcolumn = "1" -- Show the fold column
+    else
+        vim.o.foldcolumn = "0" -- Show the fold column
+    end
     vim.o.foldmethod = "expr"
     vim.o.foldexpr = "nvim_treesitter#foldexpr()"
     vim.o.foldlevel = 4

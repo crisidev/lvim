@@ -69,6 +69,8 @@ M.config = function()
     lvim.builtin.metals = { active = false }
     -- Hop / Flash
     lvim.builtin.motion_provider = "none"
+    -- Enable the status column
+    lvim.builtin.statuscol = { active = false }
 
     -- Mason
     lvim.builtin.mason.ui.icons = require("user.icons").mason

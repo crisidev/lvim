@@ -274,12 +274,12 @@ M.config = function()
         -- Markdown preview
         {
             "iamcco/markdown-preview.nvim",
-            build = "cd app && npm install",
-            ft = { "markdown" },
-            config = function()
-                vim.g.mkdp_auto_start = 1
-                vim.g.mkdp_browser = "/usr/bin/firefox"
+            cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+            build = "cd app && yarn install",
+            init = function()
+                vim.g.mkdp_filetypes = { "markdown" }
             end,
+            ft = { "markdown" },
         },
         -- Glow markdown preview
         {
@@ -616,6 +616,7 @@ M.config = function()
             config = function()
                 require("user.statuscol").config()
             end,
+            enabled = lvim.builtin.statuscol.active
         },
         -- FZF searches
         {
@@ -637,6 +638,8 @@ M.config = function()
                 }
             end,
         },
+        -- Eartly
+        { "earthly/earthly.vim" },
     }
 end
 
