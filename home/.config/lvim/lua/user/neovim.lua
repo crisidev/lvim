@@ -80,8 +80,6 @@ M.config = function()
     vim.opt.confirm = true
     -- Automatically :write before running commands and changing files
     vim.opt.autowriteall = true
-    -- Type of clipboard
-    vim.opt.clipboard = "unnamedplus"
 
     vim.opt.shortmess:append { t = true }
     vim.opt.shortmess = {
@@ -218,6 +216,9 @@ M.config = function()
 
     -- Colorcolumn
     vim.cmd [[set colorcolumn=]]
+
+    -- Shell
+    -- vim.o.shell = "/bin/bash"
 
     -- Editorconfig
     vim.g.editorconfig = true

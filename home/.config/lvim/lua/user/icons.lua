@@ -96,7 +96,7 @@ M.icons = {
     up = "",
     down = "",
     right = "",
-    left = ""
+    left = "",
 }
 
 M.todo_comments = {
@@ -150,13 +150,16 @@ M.nvimtree_icons = {
     default = "",
     symlink = "",
     git = {
-        unstaged = "",
-        staged = "",
         unmerged = "",
-        renamed = "➜",
+        added = "",
+        deleted = "",
+        modified = "",
+        renamed = "󰙏",
         untracked = "",
-        deleted = "",
-        ignored = "◌",
+        ignored = "",
+        unstaged = "",
+        staged = "",
+        conflict = "",
     },
     folder = {
         arrow_closed = "",

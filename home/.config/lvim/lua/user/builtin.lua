@@ -71,6 +71,8 @@ M.config = function()
     lvim.builtin.motion_provider = "none"
     -- Enable the status column
     lvim.builtin.statuscol = { active = false }
+    -- Enable startup time
+    lvim.builtin.startuptime = { active = false }
 
     -- Mason
     lvim.builtin.mason.ui.icons = require("user.icons").mason

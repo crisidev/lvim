@@ -1,3 +1,6 @@
+-- Profile
+-- require("plenary.profile").start("/tmp/nvim-profile.log")
+
 -- Builtin
 require("user.builtin").config()
 
@@ -37,3 +40,6 @@ require("user.lsp").config()
 
 -- Debugging
 require("user.dap").config()
+
+-- End profile
+-- require("plenary.profile").stop()

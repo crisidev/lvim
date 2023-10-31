@@ -579,17 +579,6 @@ M.config = function()
             keys = require("user.flash").keys,
             enabled = lvim.builtin.motion_provider == "flash",
         },
-        -- Matchup
-        {
-            "andymass/vim-matchup",
-            event = "BufReadPost",
-            config = function()
-                vim.g.matchup_enabled = 1
-                vim.g.matchup_surround_enabled = 1
-                vim.g.matchup_matchparen_deferred = 1
-                vim.g.matchup_matchparen_offscreen = { method = "popup" }
-            end,
-        },
         -- Highligh logs
         {
             "mtdl9/vim-log-highlighting",
@@ -616,7 +605,7 @@ M.config = function()
             config = function()
                 require("user.statuscol").config()
             end,
-            enabled = lvim.builtin.statuscol.active
+            enabled = lvim.builtin.statuscol.active,
         },
         -- FZF searches
         {
@@ -640,6 +629,10 @@ M.config = function()
         },
         -- Eartly
         { "earthly/earthly.vim" },
+        {
+            "dstein64/vim-startuptime",
+            enabled = lvim.builtin.startuptime.active,
+        },
     }
 end
 

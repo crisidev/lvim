@@ -74,7 +74,8 @@ M.config = function()
     local date = text("│  " .. icons.calendar .. "Today is " .. os.date "%a %d %b" .. "      │")
     local nvim_version = text(
         "│  "
-            .. icons.vim .. "Neovim version "
+            .. icons.vim
+            .. "Neovim version "
             .. vim.version().major
             .. "."
             .. vim.version().minor
@@ -82,8 +83,13 @@ M.config = function()
             .. vim.version().patch
             .. "    │"
     )
-    local lvim_version =
-        text("│  " .. icons.moon .. " LunarVim " .. require("lvim.utils.git").get_lvim_version():gsub("-dirty", "", 1) .. " │")
+    local lvim_version = text(
+        "│  "
+            .. icons.moon
+            .. " LunarVim "
+            .. require("lvim.utils.git").get_lvim_version():gsub("-dirty", "", 1)
+            .. " │"
+    )
     local plugin_count = text("│  " .. kind.Module .. plugins .. " plugins in total     │")
     local border_lower =
         text "╰─────────────────────────────╯"

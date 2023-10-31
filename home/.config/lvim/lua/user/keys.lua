@@ -236,7 +236,7 @@ end
 M.normal_keys = function()
     lvim.keys.normal_mode = {
         -- Search
-        ["<esc><esc>"] = "<cmd>nohlsearch<CR>",
+        -- ["<esc><esc>"] = "<cmd>nohlsearch<CR>",
         -- CR maximize
         -- ["<CR>"] = {
         --     "<cmd>lua require('user.neovim').maximize_current_split()<CR>",
