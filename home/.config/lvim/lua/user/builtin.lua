@@ -33,7 +33,9 @@ M.config = function()
     -- Twilight
     lvim.builtin.twilight = { enable = true }
     -- Copilot
-    lvim.builtin.copilot = { active = true }
+    lvim.builtin.copilot = { active = false }
+    -- GPT
+    lvim.builtin.gpt = { active = true }
     -- LSP Signature help
     lvim.builtin.lsp_signature_help = { active = true }
     -- Atomatic inlay hints

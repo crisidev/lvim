@@ -58,6 +58,7 @@ M.icons = {
     package = "",
     spelling = " ",
     copilot = "",
+    gpt = "",
     attention = "",
     Function = "",
     power = "󰚥",

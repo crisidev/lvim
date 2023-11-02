@@ -32,6 +32,7 @@ M.config = function()
         vim.g.neovide_cursor_unfocused_outline_width = 0.0
         vim.g.neovide_cursor_vfx_mode = ""
 
+        -- Remapping
         vim.g.neovide_input_use_logo = 1
         vim.api.nvim_set_keymap("", "<D-v>", "+p<CR>", { noremap = true, silent = true })
         vim.api.nvim_set_keymap("", "<D-/>", "+p<CR>", { noremap = true, silent = true })
@@ -41,6 +42,7 @@ M.config = function()
         vim.api.nvim_set_keymap("t", "<D-/>", "<C-R>+", { noremap = true, silent = true })
         vim.api.nvim_set_keymap("v", "<D-v>", "<C-R>+", { noremap = true, silent = true })
         vim.api.nvim_set_keymap("v", "<D-/>", "<C-R>+", { noremap = true, silent = true })
+        vim.api.nvim_set_keymap("v", "<D-c>", "+yi", { noremap = true, silent = true })
     end
 end
 

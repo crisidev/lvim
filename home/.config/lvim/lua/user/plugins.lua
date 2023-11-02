@@ -220,8 +220,9 @@ M.config = function()
             event = { "BufReadPost", "BufNew" },
         },
         ------------------------------------------------------------------------------
-        -- Copilot baby..
+        -- A/I
         ------------------------------------------------------------------------------
+        -- Copilot
         {
             "zbirenbaum/copilot.lua",
             event = "VimEnter",
@@ -236,6 +237,22 @@ M.config = function()
                 }
             end,
             enabled = lvim.builtin.copilot.active,
+        },
+        -- Gpt
+        {
+            "jackMort/ChatGPT.nvim",
+            event = "VeryLazy",
+            config = function()
+                require("chatgpt").setup {
+                    api_key_cmd = "cat ~/.config/lvim/.gpt"
+                }
+            end,
+            dependencies = {
+                "MunifTanjim/nui.nvim",
+                "nvim-lua/plenary.nvim",
+                "nvim-telescope/telescope.nvim",
+            },
+            enabled = lvim.builtin.gpt.active,
         },
         ------------------------------------------------------------------------------
         -- Cmp all the things.
@@ -559,9 +576,9 @@ M.config = function()
             event = { "BufReadPost", "BufNew" },
         },
         { "nvim-neotest/neotest-plenary" },
-        { "nvim-neotest/neotest-go", event = { "BufEnter *.go" } },
+        { "nvim-neotest/neotest-go",     event = { "BufEnter *.go" } },
         { "nvim-neotest/neotest-python", event = { "BufEnter *.py" } },
-        { "rouge8/neotest-rust", event = { "BufEnter *.rs" } },
+        { "rouge8/neotest-rust",         event = { "BufEnter *.rs" } },
         -- Hop
         {
             "phaazon/hop.nvim",
@@ -607,28 +624,9 @@ M.config = function()
             end,
             enabled = lvim.builtin.statuscol.active,
         },
-        -- FZF searches
-        {
-            "ibhagwan/fzf-lua",
-            config = function()
-                -- calling `setup` is optional for customization
-                local ff = require "user.fzf"
-                require("fzf-lua").setup(vim.tbl_deep_extend("keep", vim.deepcopy(ff.active_profile), ff.default_opts))
-            end,
-            enabled = not lvim.builtin.telescope.active,
-        },
-        -- Local codellama using llama.cpp
-        {
-            "gsuuon/llm.nvim",
-            config = function()
-                local codellama = require "llm.providers.codellama"
-                require("llm").setup {
-                    default_prompt = codellama.default_prompt,
-                }
-            end,
-        },
-        -- Eartly
+        -- Hearthly files
         { "earthly/earthly.vim" },
+        -- Startup time
         {
             "dstein64/vim-startuptime",
             enabled = lvim.builtin.startuptime.active,

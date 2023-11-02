@@ -1,6 +1,14 @@
 local M = {}
 
 M.config = function()
+    local callbacks = {
+        ["code.crisidev.org"] = require("gitlinker.hosts").get_gitea_type_url,
+    }
+    local gitlab_url = os.getenv "CORPORATE_GITLAB_URL"
+    if gitlab_url then
+        callbacks[gitlab_url] = require("gitlinker.hosts").get_gitlab_type_url
+    end
+
     require("gitlinker").setup {
         opts = {
             -- adds current line nr in the url for normal mode
@@ -12,9 +20,7 @@ M.config = function()
             -- mapping to call url generation
             mappings = nil,
         },
-        callbacks = {
-            ["code.crisidev.org"] = require("gitlinker.hosts").get_gitea_type_url,
-        },
+        callbacks = callbacks
     }
 end
 
