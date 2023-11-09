@@ -243,7 +243,7 @@ M.config = function()
             "jackMort/ChatGPT.nvim",
             event = "VeryLazy",
             config = function()
-                if vim.fn.filereadable(vim.fn.expand("~/.config/lvim/.gpt")) then
+                if vim.fn.filereadable(vim.fn.expand("~/.config/lvim/.gpt")) == 1 then
                     require("chatgpt").setup {
                         api_key_cmd = "cat ~/.config/lvim/.gpt"
                     }
