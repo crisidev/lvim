@@ -23,3 +23,9 @@ Take what you need, it also comes warrant free 😊
 ❯❯❯ source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 ❯❯❯ homeshick link lvim
 ```
+
+## Update mason-ensure-installed
+
+```sh
+❯❯❯ echo "$(cat ~/.local/state/lvim/mason.log |grep "Installation succee" |awk -F'for Package' '{print $2}' |sed 's/(name=//g'| sed 's/)//g' | sort -u |xargs)" > home/.config/lvim/mason-ensure-installed
+```
