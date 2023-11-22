@@ -54,6 +54,14 @@ M.default_diagnostic_config = {
     },
 }
 
+M.toggle_inlay_hints = function()
+    if vim.lsp.inlay_hint.is_enabled() then
+        vim.lsp.inlay_hint.enable(nil, false)
+    else
+        vim.lsp.inlay_hint.enable()
+    end
+end
+
 M.config = function()
     -- Log level
     vim.lsp.set_log_level "error"
