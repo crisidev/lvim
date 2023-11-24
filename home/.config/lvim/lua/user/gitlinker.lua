@@ -20,7 +20,7 @@ M.config = function()
             -- mapping to call url generation
             mappings = nil,
         },
-        callbacks = callbacks
+        callbacks = callbacks,
     }
 end
 

@@ -32,14 +32,6 @@ M.config = function()
         end,
     })
 
-    -- Close Neotree during wq
-    vim.api.nvim_create_autocmd("VimLeave", {
-        group = "_lvim_user",
-        pattern = "*",
-        desc = "Close Neotree during quit",
-        command = "Neotree close",
-    })
-
     -- Codelense viewer
     vim.api.nvim_create_autocmd("CursorHold", {
         group = "_lvim_user",

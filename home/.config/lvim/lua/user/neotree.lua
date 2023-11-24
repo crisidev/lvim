@@ -3,6 +3,7 @@ local M = {}
 M.config = function()
     local tree_icons = require("user.icons").nvimtree_icons
     require("neo-tree").setup {
+        close_if_last_window = true,
         popup_border_style = "rounded",
         enable_diagnostics = true,
         source_selector = {

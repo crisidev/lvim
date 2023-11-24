@@ -261,7 +261,7 @@ M.lsp_normal_keys = function()
                         t = { "<cmd>ChatGPTRun translate<CR>", "Translate", mode = { "n", "v" } },
                         k = { "<cmd>ChatGPTRun keywords<CR>", "Keywords", mode = { "n", "v" } },
                         s = { "<cmd>ChatGPTRun summarize<CR>", "Summarize", mode = { "n", "v" } },
-                    }
+                    },
                 },
             },
         }

@@ -243,9 +243,9 @@ M.config = function()
             "jackMort/ChatGPT.nvim",
             event = "VeryLazy",
             config = function()
-                if vim.fn.filereadable(vim.fn.expand("~/.config/lvim/.gpt")) == 1 then
+                if vim.fn.filereadable(vim.fn.expand "~/.config/lvim/.gpt") == 1 then
                     require("chatgpt").setup {
-                        api_key_cmd = "cat ~/.config/lvim/.gpt"
+                        api_key_cmd = "cat ~/.config/lvim/.gpt",
                     }
                 end
             end,
@@ -578,9 +578,9 @@ M.config = function()
             event = { "BufReadPost", "BufNew" },
         },
         { "nvim-neotest/neotest-plenary" },
-        { "nvim-neotest/neotest-go",     event = { "BufEnter *.go" } },
+        { "nvim-neotest/neotest-go", event = { "BufEnter *.go" } },
         { "nvim-neotest/neotest-python", event = { "BufEnter *.py" } },
-        { "rouge8/neotest-rust",         event = { "BufEnter *.rs" } },
+        { "rouge8/neotest-rust", event = { "BufEnter *.rs" } },
         -- Hop
         {
             "phaazon/hop.nvim",
