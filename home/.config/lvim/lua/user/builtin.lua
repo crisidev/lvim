@@ -47,14 +47,13 @@ M.config = function()
     lvim.builtin.lir.active = false
     -- Breadcrumbs
     lvim.builtin.breadcrumbs.active = false
+    lvim.builtin.breadcrumbs.provider = "dropbar"
     -- Illuminate
     lvim.builtin.illuminate.active = true
     -- Indent lines
     lvim.builtin.indentlines.active = false
     -- Global status line
     lvim.builtin.global_statusline = true
-    -- Winbar provider
-    lvim.builtin.winbar_provider = "navic"
     -- Cmpline
     lvim.builtin.cmp.cmdline.enable = true
     lvim.builtin.cmp.dictionary = { enable = false }

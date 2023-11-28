@@ -483,6 +483,8 @@ M.config = function()
             config = function()
                 require("user.silicon").config()
             end,
+            event = "VeryLazy",
+            cmd = "Silicon",
         },
         -- TODO comments
         {
@@ -538,6 +540,11 @@ M.config = function()
             config = function()
                 require("user.incline").config()
             end,
+            enabled = lvim.builtin.breadcrumbs.provider == "incline",
+        },
+        {
+            "Bekaboo/dropbar.nvim",
+            enabled = lvim.builtin.breadcrumbs.provider == "dropbar",
         },
         -- Cleanup whitespaces
         {
@@ -633,6 +640,24 @@ M.config = function()
             "dstein64/vim-startuptime",
             enabled = lvim.builtin.startuptime.active,
         },
+        -- Compiler explorer
+        {
+            "krady21/compiler-explorer.nvim",
+            cmd = {
+                "CECompile",
+                "CECompileLive",
+                "CEFormat",
+                "CEAddLibrary",
+                "CELoadExample",
+                "CEOpenWebsite",
+                "CEDeleteCache",
+                "CEShowTooltip",
+                "CEGotoLabel",
+            },
+            event = "VeryLazy",
+        },
+        -- Smart quit
+        { "marklcrns/vim-smartq" },
     }
 end
 
