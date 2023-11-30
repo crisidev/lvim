@@ -98,6 +98,36 @@ M.icons = {
     down = "",
     right = "",
     left = "",
+    outline = "",
+}
+
+M.symbols_outline = {
+    File = "󰈚",
+    Module = "",
+    Namespace = "󰌗",
+    Package = "",
+    Class = "󰠱",
+    Method = "ƒ",
+    Property = "",
+    Field = "󰜢",
+    Constructor = "",
+    Enum = "",
+    Interface = " ",
+    Function = "",
+    Variable = "",
+    Constant = "",
+    String = "𝓐",
+    Number = "#",
+    Boolean = "⊨",
+    Array = "[]",
+    Object = "⦿",
+    Key = "",
+    Null = "NULL",
+    EnumMember = "",
+    Struct = "󰙅",
+    Event = "",
+    Operator = "󰆕",
+    TypeParameter = "𝙏",
 }
 
 M.todo_comments = {

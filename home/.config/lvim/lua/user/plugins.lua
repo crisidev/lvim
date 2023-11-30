@@ -656,8 +656,23 @@ M.config = function()
             },
             event = "VeryLazy",
         },
-        -- Smart quit
-        { "marklcrns/vim-smartq" },
+        -- Tags
+        {
+            "liuchengxu/vista.vim",
+            init = function()
+                require("user.vista").config()
+            end,
+            event = "BufReadPost",
+            enabled = lvim.builtin.tag_provider == "vista",
+        },
+        {
+            "simrat39/symbols-outline.nvim",
+            config = function()
+                require("user.outline").config()
+            end,
+            event = "BufReadPost",
+            enabled = lvim.builtin.tag_provider == "symbols-outline",
+        },
     }
 end
 

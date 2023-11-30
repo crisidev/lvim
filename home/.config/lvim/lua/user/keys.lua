@@ -198,6 +198,13 @@ M.which_keys_normal = function()
         R = { "<cmd>OverseerRunCmd<cr>", "Run with Cmd" },
     }
 
+    -- Tags
+    if lvim.builtin.tag_provider == "symbols-outline" then
+        lvim.builtin.which_key.mappings["o"] = { "<cmd>SymbolsOutline<cr>", icons.outline .. " Symbol Outline" }
+    elseif lvim.builtin.tag_provider == "vista" then
+        lvim.builtin.which_key.mappings["o"] = { "<cmd>Vista!!<cr>", icons.outline .. " Vista" }
+    end
+
     -- Names
     lvim.builtin.which_key.mappings["L"]["name"] = icons.moon .. " Lunarvim"
     lvim.builtin.which_key.mappings["p"]["name"] = icons.package .. " Lazy"

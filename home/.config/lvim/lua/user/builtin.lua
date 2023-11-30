@@ -46,8 +46,14 @@ M.config = function()
     -- Lir
     lvim.builtin.lir.active = false
     -- Breadcrumbs
-    lvim.builtin.breadcrumbs.active = false
-    lvim.builtin.breadcrumbs.provider = "dropbar"
+    lvim.builtin.breadcrumbs.provider = "incline"
+    if lvim.builtin.breadcrumbs.provider == "none" then
+        lvim.builtin.breadcrumbs.active = true
+    else
+        lvim.builtin.breadcrumbs.active = false
+    end
+    -- Tags
+    lvim.builtin.tag_provider = "symbols-outline"
     -- Illuminate
     lvim.builtin.illuminate.active = true
     -- Indent lines
