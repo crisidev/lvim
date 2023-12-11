@@ -219,6 +219,14 @@ M.config = function()
             lazy = true,
             event = { "BufReadPost", "BufNew" },
         },
+        {
+            "Wansmer/symbol-usage.nvim",
+            event = "LspAttach",
+            enabled = lvim.builtin.symbols_usage.active,
+            config = function()
+                require("user.symbol_use").config()
+            end,
+        },
         ------------------------------------------------------------------------------
         -- A/I
         ------------------------------------------------------------------------------

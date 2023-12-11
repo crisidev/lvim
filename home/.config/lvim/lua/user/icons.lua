@@ -101,6 +101,14 @@ M.icons = {
     outline = "",
 }
 
+M.symbol_usage = {
+    circle_left = "",
+    circle_right = "",
+    def = "󰳽 ",
+    ref = "󰌹 ",
+    impl = "󰡱 ",
+}
+
 M.symbols_outline = {
     File = "󰈚",
     Module = "",

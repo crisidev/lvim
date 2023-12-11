@@ -69,6 +69,8 @@ M.config = function()
     lvim.builtin.metals = { active = false }
     -- Hop / Flash
     lvim.builtin.motion_provider = "none"
+    -- Enable symbol usage
+    lvim.builtin.symbols_usage = { active = true }
     -- Enable the status column
     lvim.builtin.statuscol = { active = false }
     -- Enable startup time
