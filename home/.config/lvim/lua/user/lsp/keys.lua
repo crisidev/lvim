@@ -190,6 +190,19 @@ M.lsp_normal_keys = function()
         }
     end
 
+    -- Symbol usage
+    if lvim.builtin.symbols_usage.active then
+        wk.register {
+            ["f"] = {
+                W = {
+                    name = icons.inlay .. "Symbol usage",
+                    t = {"<cmd>lua require('symbol-usage').toggle()<cr>",  "Toggle" },
+                    r = {"<cmd>lua require('symbol-usage').refresh()<cr>", "Refresh" },
+                }
+            },
+        }
+    end
+
     -- Incremental rename
     if lvim.builtin.noice.active then
         wk.register {
