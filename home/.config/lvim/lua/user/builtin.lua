@@ -79,6 +79,7 @@ M.config = function()
     -- Mason
     lvim.builtin.mason.ui.icons = require("user.icons").mason
     lvim.builtin.treesitter_textobjects = { active = false }
+    lvim.builtin.mason.registries[3] = "lua:user.lsp.pylance"
 
     -- Dashboard
     lvim.builtin.alpha.active = true

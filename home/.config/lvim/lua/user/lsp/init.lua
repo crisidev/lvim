@@ -137,7 +137,8 @@ M.config = function()
     require("user.null_ls").config()
 
     -- Configure Lsp providers
-    require("user.lsp.python").config()
+    require("user.lsp.python").config_pyright()
+    require("user.lsp.python").config_rufflsp()
     require("user.lsp.go").config()
     require("user.lsp.yaml").config()
     require("user.lsp.toml").config()

@@ -26,7 +26,7 @@ M.lsp_normal_keys = function()
             },
             a = {
                 --     "<cmd>CodeActionMenu<cr>",
-                "<cmd>lua vim.lsp.buf.code_action()<cr>",
+                "<cmd>lua require('actions-preview').code_actions()<cr>",
                 icons.codelens .. "Code actions",
             },
             -- Goto
@@ -196,9 +196,9 @@ M.lsp_normal_keys = function()
             ["f"] = {
                 W = {
                     name = icons.inlay .. "Symbol usage",
-                    t = {"<cmd>lua require('symbol-usage').toggle()<cr>",  "Toggle" },
-                    r = {"<cmd>lua require('symbol-usage').refresh()<cr>", "Refresh" },
-                }
+                    t = { "<cmd>lua require('symbol-usage').toggle()<cr>", "Toggle" },
+                    r = { "<cmd>lua require('symbol-usage').refresh()<cr>", "Refresh" },
+                },
             },
         }
     end

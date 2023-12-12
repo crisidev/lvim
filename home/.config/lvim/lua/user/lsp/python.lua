@@ -1,25 +1,28 @@
+local util = require "lspconfig.util"
+local manager = require "lvim.lsp.manager"
+local which_key = require "which-key"
+local icons = require "user.icons"
+
 local M = {}
 
-M.config = function()
-    local util = require "lspconfig.util"
-    local root_files = {
-        "pyproject.toml",
-        "setup.py",
-        "setup.cfg",
-        "requirements.txt",
-        "Pipfile",
-        "manage.py",
-        "pyrightconfig.json",
-    }
-    local root_dir = util.root_pattern(unpack(root_files))(fname)
-        or util.root_pattern ".git"(fname)
-        or util.path.dirname(fname)
+M.root_files = {
+    "pyproject.toml",
+    "setup.py",
+    "setup.cfg",
+    "requirements.txt",
+    "Pipfile",
+    "manage.py",
+    "pyrightconfig.json",
+}
 
+M.root_dir = function(fname)
+    return util.root_pattern(unpack(M.root_files))(fname) or util.root_pattern ".git"(fname) or util.path.dirname(fname)
+end
+
+M.config_pyright = function()
     -- Lsp config
     local pyright_opts = {
-        root_dir = function(fname)
-            return root_dir
-        end,
+        root_dir = M.root_dir,
         settings = {
             pyright = {
                 disableLanguageServices = false,
@@ -37,22 +40,20 @@ M.config = function()
         filetypes = { "python" },
     }
 
-    require("lvim.lsp.manager").setup("pyright", pyright_opts)
+    manager.setup("pyright", pyright_opts)
+end
 
+M.config_rufflsp = function()
     local ruff_opts = {
-        root_dir = function(fname)
-            return root_dir
-        end,
+        root_dir = M.root_dir,
         single_file_support = true,
         filetypes = { "python" },
     }
 
-    require("lvim.lsp.manager").setup("ruff_lsp", ruff_opts)
+    manager.setup("ruff_lsp", ruff_opts)
 end
 
 M.build_tools = function()
-    local which_key = require "which-key"
-    local icons = require "user.icons"
     local opts = {
         mode = "n",
         prefix = "f",

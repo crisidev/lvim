@@ -219,12 +219,42 @@ M.config = function()
             lazy = true,
             event = { "BufReadPost", "BufNew" },
         },
+        -- Symbols
         {
             "Wansmer/symbol-usage.nvim",
             event = "LspAttach",
             enabled = lvim.builtin.symbols_usage.active,
             config = function()
                 require("user.symbol_use").config()
+            end,
+        },
+        {
+            "simrat39/symbols-outline.nvim",
+            config = function()
+                require("user.outline").config()
+            end,
+            event = "BufReadPost",
+            enabled = lvim.builtin.tag_provider == "symbols-outline",
+        },
+        -- Preview code actions
+        {
+            "aznhe21/actions-preview.nvim",
+            config = function()
+                require("actions-preview").setup {
+                    telescope = {
+                        sorting_strategy = "ascending",
+                        layout_strategy = "vertical",
+                        layout_config = {
+                            width = 0.8,
+                            height = 0.9,
+                            prompt_position = "top",
+                            preview_cutoff = 20,
+                            preview_height = function(_, _, max_lines)
+                                return max_lines - 20
+                            end,
+                        },
+                    },
+                }
             end,
         },
         ------------------------------------------------------------------------------
@@ -270,6 +300,7 @@ M.config = function()
         -- Cmp for command line
         -- Cmp for emojis..
         { "hrsh7th/cmp-emoji" },
+        { "hrsh7th/cmp-nvim-lsp" },
         {
             "uga-rosa/cmp-dictionary",
             config = function()
@@ -672,14 +703,6 @@ M.config = function()
             end,
             event = "BufReadPost",
             enabled = lvim.builtin.tag_provider == "vista",
-        },
-        {
-            "simrat39/symbols-outline.nvim",
-            config = function()
-                require("user.outline").config()
-            end,
-            event = "BufReadPost",
-            enabled = lvim.builtin.tag_provider == "symbols-outline",
         },
     }
 end
