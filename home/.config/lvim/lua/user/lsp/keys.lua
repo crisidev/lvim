@@ -10,7 +10,7 @@ M.lsp_normal_keys = function()
 
     -- Hover
     lvim.lsp.buffer_mappings.normal_mode["K"] = {
-        "<cmd>lua require('user.lsp').show_documentation()<CR>",
+        "<cmd>lua require('user.lsp').show_documentation()<cr>",
         icons.docs .. "Show Documentation",
     }
 
@@ -251,31 +251,46 @@ M.lsp_normal_keys = function()
             ["f"] = {
                 G = {
                     name = icons.gpt .. " ChatGPT",
-                    p = { "<cmd>ChatGPT<CR>", "ChatGPT prompt" },
-                    a = { "<cmd>ChatGPTActAs<CR>", "Act as" },
-                    e = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction", mode = { "n", "v" } },
+                    p = { "<cmd>ChatGPT<cr>", "ChatGPT prompt" },
+                    a = { "<cmd>ChatGPTActAs<cr>", "Act as" },
+                    e = { "<cmd>ChatGPTEditWithInstruction<cr>", "Edit with instruction", mode = { "n", "v" } },
                     c = {
                         name = "Code",
-                        d = { "<cmd>ChatGPTRun docstring<CR>", "Docstring", mode = { "n", "v" } },
-                        t = { "<cmd>ChatGPTRun add_tests<CR>", "Add Tests", mode = { "n", "v" } },
-                        o = { "<cmd>ChatGPTRun optimize_code<CR>", "Optimize Code", mode = { "n", "v" } },
-                        f = { "<cmd>ChatGPTRun fix_bugs<CR>", "Fix Bugs", mode = { "n", "v" } },
-                        e = { "<cmd>ChatGPTRun explain_code<CR>", "Explain Code", mode = { "n", "v" } },
-                        c = { "<cmd>ChatGPTRun complete_code<CR>", "Complete Code", mode = { "n", "v" } },
+                        d = { "<cmd>ChatGPTRun docstring<cr>", "Docstring", mode = { "n", "v" } },
+                        t = { "<cmd>ChatGPTRun add_tests<cr>", "Add Tests", mode = { "n", "v" } },
+                        o = { "<cmd>ChatGPTRun optimize_code<cr>", "Optimize Code", mode = { "n", "v" } },
+                        f = { "<cmd>ChatGPTRun fix_bugs<cr>", "Fix Bugs", mode = { "n", "v" } },
+                        e = { "<cmd>ChatGPTRun explain_code<cr>", "Explain Code", mode = { "n", "v" } },
+                        c = { "<cmd>ChatGPTRun complete_code<cr>", "Complete Code", mode = { "n", "v" } },
                         r = {
-                            "<cmd>ChatGPTRun code_readability_analysis<CR>",
+                            "<cmd>ChatGPTRun code_readability_analysis<cr>",
                             "Code Readability Analysis",
                             mode = { "n", "v" },
                         },
                     },
                     t = {
                         name = "Text",
-                        g = { "<cmd>ChatGPTRun grammar_correction<CR>", "Grammar Correction", mode = { "n", "v" } },
-                        t = { "<cmd>ChatGPTRun translate<CR>", "Translate", mode = { "n", "v" } },
-                        k = { "<cmd>ChatGPTRun keywords<CR>", "Keywords", mode = { "n", "v" } },
-                        s = { "<cmd>ChatGPTRun summarize<CR>", "Summarize", mode = { "n", "v" } },
+                        g = { "<cmd>ChatGPTRun grammar_correction<cr>", "Grammar Correction", mode = { "n", "v" } },
+                        t = { "<cmd>ChatGPTRun translate<cr>", "Translate", mode = { "n", "v" } },
+                        k = { "<cmd>ChatGPTRun keywords<cr>", "Keywords", mode = { "n", "v" } },
+                        s = { "<cmd>ChatGPTRun summarize<cr>", "Summarize", mode = { "n", "v" } },
                     },
                 },
+            },
+        }
+    end
+
+    -- Tags
+    if lvim.builtin.tag_provider == "symbols-outline" then
+        wk.register {
+            ["f"] = {
+                o = { "<cmd>SymbolsOutline<cr>", icons.outline .. " Symbol Outline" },
+            },
+        }
+    elseif lvim.builtin.tag_provider == "vista" then
+        wk.register {
+            ["f"] = {
+                o = { "<cmd>Vista!!<cr>", icons.outline .. " Vista" },
             },
         }
     end
@@ -289,7 +304,7 @@ M.lsp_visual_keys = function()
 
     -- Hover
     lvim.lsp.buffer_mappings.visual_mode["K"] = {
-        "<cmd>lua require('user.lsp').show_documentation()<CR>",
+        "<cmd>lua require('user.lsp').show_documentation()<cr>",
         icons.docs .. "Show Documentation",
     }
 
@@ -325,6 +340,23 @@ M.lsp_visual_keys = function()
             },
         },
     }, { mode = "v" })
+
+    -- Tags
+    if lvim.builtin.tag_provider == "symbols-outline" then
+        wk.register {
+            ["f"] = {
+                o = { "<cmd>SymbolsOutline<cr>", icons.outline .. " Symbol Outline" },
+            },
+            { mode = "v" },
+        }
+    elseif lvim.builtin.tag_provider == "vista" then
+        wk.register {
+            ["f"] = {
+                o = { "<cmd>Vista!!<cr>", icons.outline .. " Vista" },
+            },
+            { mode = "v" },
+        }
+    end
 end
 
 M.config = function()
