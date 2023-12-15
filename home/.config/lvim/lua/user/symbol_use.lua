@@ -14,7 +14,7 @@ M.config = function()
         local round_start = { icons.circle_left, "SymbolUsageRounding" }
         local round_end = { icons.circle_right, "SymbolUsageRounding" }
 
-        if symbol.references then
+        if symbol.references and symbol.references > 0 then
             local usage = symbol.references <= 1 and "usage" or "usages"
             local num = symbol.references == 0 and "no" or symbol.references
             ins(res, round_start)
@@ -23,7 +23,7 @@ M.config = function()
             ins(res, round_end)
         end
 
-        if symbol.definition then
+        if symbol.definition and symbol.definition > 0 then
             if #res > 0 then
                 table.insert(res, { " ", "NonText" })
             end
@@ -33,7 +33,7 @@ M.config = function()
             ins(res, round_end)
         end
 
-        if symbol.implementation then
+        if symbol.implementation and symbol.implementation > 0 then
             if #res > 0 then
                 table.insert(res, { " ", "NonText" })
             end
