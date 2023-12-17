@@ -142,7 +142,7 @@ M.config = function()
             button("l", icons.magic .. " Last session", "<cmd>lua require('user.dashboard').session_load_last()<cr>"),
             button("S", icons.session .. " Sessions", "<cmd>lua require('user.telescope').session()<cr>"),
             button("z", icons.folder .. "  Zoxide", "<cmd>lua require('user.telescope').zoxide()<cr>"),
-            button("f", kind.File .. " Find file", "<cmd>lua require('user.telescope').find_project_files()<cr>"),
+            button("f", kind.File .. "  Find file", "<cmd>lua require('user.telescope').find_project_files()<cr>"),
             button("s", icons.text .. "  Find word", "<cmd>lua require('user.telescope').find_string()<cr>"),
             button("n", icons.stuka .. " New file", "<cmd>ene <BAR> startinsert <cr>"),
             button("b", icons.files .. " File browser", "<cmd>lua require('user.telescope').file_browser()<cr>"),

@@ -2,6 +2,10 @@ local M = {}
 
 M.config = function()
     require("grammar-guard").init()
+    local ok, grammarguard = pcall(require, "grammar-guard")
+    if ok then
+        grammarguard.init()
+    end
 
     local opts = {
         cmd = { "ltex-ls" },

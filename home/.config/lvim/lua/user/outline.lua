@@ -1,7 +1,7 @@
 local M = {}
 
 M.config = function()
-    local kind = require("user.icons").symbols_outline
+    local kind = require("user.cmp").kind
 
     local status_ok, symout = pcall(require, "symbols-outline")
     if not status_ok then

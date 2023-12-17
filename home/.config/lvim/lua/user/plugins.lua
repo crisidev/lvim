@@ -282,9 +282,13 @@ M.config = function()
             event = "VeryLazy",
             config = function()
                 if vim.fn.filereadable(vim.fn.expand "~/.config/lvim/.gpt") == 1 then
-                    require("chatgpt").setup {
-                        api_key_cmd = "cat ~/.config/lvim/.gpt",
-                    }
+                    local ok, gpt
+                    pcall(require, "chatgpt")
+                    if ok then
+                        gpt.setup {
+                            api_key_cmd = "cat ~/.config/lvim/.gpt",
+                        }
+                    end
                 end
             end,
             dependencies = {
