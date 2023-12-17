@@ -25,6 +25,12 @@ end
 M.default_diagnostic_config = {
     signs = {
         active = true,
+        text = {
+            [vim.diagnostic.severity.ERROR] = icons.error,
+            [vim.diagnostic.severity.WARN] = icons.warn,
+            [vim.diagnostic.severity.INFO] = icons.info,
+            [vim.diagnostic.severity.HINT] = icons.hint,
+        },
         values = {
             { name = "DiagnosticSignError", text = icons.error },
             { name = "DiagnosticSignWarn", text = icons.warn },
