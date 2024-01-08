@@ -1,15 +1,9 @@
 local M = {}
 
 M.config = function()
-    -- Lsp config
-    local status_ok, rust_tools = pcall(require, "rust-tools")
-    if not status_ok then
-        return
-    end
-
     local opts = {
         tools = {
-            executor = require("rust-tools/executors").termopen, -- can be quickfix or termopen
+            executor = require "rustaceanvim.executors.termopen", -- can be quickfix or termopen
             reload_workspace_from_cargo_toml = true,
             inlay_hints = {
                 auto = not lvim.builtin.automatic_inlay_hints.active,
@@ -43,7 +37,7 @@ M.config = function()
             end,
             on_init = require("lvim.lsp").common_on_init,
             capabilities = require("lvim.lsp").common_capabilities(),
-            settings = {
+            default_settings = {
                 ["rust-analyzer"] = {
                     inlayHints = {
                         locationLinks = false,
@@ -74,13 +68,16 @@ M.config = function()
     end
 
     if vim.fn.filereadable(codelldb_path) and vim.fn.filereadable(liblldb_path) then
+        local cfg = require "rustaceanvim.config"
         opts.dap = {
-            adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
+            adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
         }
     else
         vim.notify("please reinstall codellb, cannot find liblldb or codelldb", vim.log.levels.WARN)
     end
-    rust_tools.setup(opts)
+    vim.g.rustaceanvim = function()
+        return opts
+    end
 end
 
 M.build_tools = function()
@@ -95,22 +92,24 @@ M.build_tools = function()
         nowait = true,
     }
     local mappings = {
-        K = { "<cmd>RustOpenExternalDocs<cr>", icons.icons.docs .. "Open docs.rs" },
+        K = { "<cmd>RustLsp externalDocs<cr>", icons.icons.docs .. "Open docs.rs" },
         B = {
             name = icons.languages.rust .. " Build helpers",
-            a = { "<cmd>lua require('rust-tools').hove_actions.hover_actions()<cr>", "Hover actions" },
-            A = { "<cmd>lua require('rust-tools').code_action_group.code_action_group()<cr>", "Code action group" },
-            r = { "<cmd>lua require('rust-tools').runnables.runnables()<cr>", "Run targes" },
-            R = { "<cmd>lua require('rust-tools').debuggables.debuggables()<cr>", "Debug targes" },
-            e = { "<cmd>lua require('rust-tools').expand_macro.expand_macro()<cr>", "Expand macro" },
-            m = { "<cmd>lua require('rust-tools').parent_module.parent_module()<cr>", "Parent module" },
-            u = { "<cmd>lua require('rust-tools').move_item.move_item(true)<cr>", "Move item up" },
-            d = { "<cmd>lua require('rust-tools').move_item.move_item(false)<cr>", "Move item down" },
-            H = { "<cmd>lua require('rust-tools').hover_range.hover_range()<cr>", "Hover range" },
-            c = { "<cmd>lua require('rust-tools').open_cargo_toml.open_cargo_toml()<cr>", "Open Cargo.toml" },
-            j = { "<cmd>lua require('rust-tools').join_lines.join_lines()", "Join lines" },
-            w = { "<cmd>RustReloadWorkspace<cr>", "Reload workspace" },
-            D = { "<cmd>RustOpenExternalDocs<cr>", "Open docs.rs" },
+            a = { "<cmd>RustLsp hover actions<cr>", "Hover actions" },
+            r = { "<cmd>RustLsp runnables<cr>", "Run targes" },
+            R = { "<cmd>RustLsp debuggables<cr>", "Debug targes" },
+            e = { "<cmd>RustLsp expandMacro<cr>", "Expand macro" },
+            p = { "<cmd>RustLsp rebuildProcMacros<cr>", "Rebuild proc macro" },
+            m = { "<cmd>RustLsp parentModule<cr>", "Parent module" },
+            u = { "<cmd>RustLsp moveItem up<cr>", "Move item up" },
+            d = { "<cmd>RustLsp moveItem down<cr>", "Move item down" },
+            H = { "<cmd>RustLsp hover range<cr>", "Hover range" },
+            E = { "<cmd>RustLsp explainError<cr>", "Explain error" },
+            c = { "<cmd>RustLsp openCargo<cr>", "Open Cargo.toml" },
+            t = { "<cmd>RustLsp syntaxTree<cr>", "Syntax tree" },
+            j = { "<cmd>RustLsp joinLines", "Join lines" },
+            w = { "<cmd>RustLsp reloadWorkspace<cr>", "Reload workspace" },
+            D = { "<cmd>RustLsp externalDocs<cr>", "Open docs.rs" },
         },
     }
     which_key.register(mappings, opts)

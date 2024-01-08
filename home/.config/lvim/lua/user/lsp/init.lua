@@ -11,12 +11,7 @@ M.show_documentation = function()
     elseif vim.tbl_contains({ "man" }, filetype) then
         vim.cmd("Man " .. vim.fn.expand "<cword>")
     elseif filetype == "rust" then
-        local found, rt = pcall(require, "rust-tools")
-        if found then
-            rt.hover_actions.hover_actions()
-        else
-            vim.lsp.buf.hover()
-        end
+        vim.cmd.RustLsp { "hover", "actions" }
     else
         vim.lsp.buf.hover()
     end

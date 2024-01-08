@@ -93,7 +93,8 @@ M.config = function()
         },
         -- Lsp Rust
         {
-            "simrat39/rust-tools.nvim",
+            "mrcjkb/rustaceanvim",
+            version = "^3",
             ft = { "rust", "rs" },
             lazy = true,
         },
