@@ -1,5 +1,15 @@
 local M = {}
 
+M.scale = function(amount)
+    local temp = vim.g.neovide_scale_factor + amount
+
+    if temp < 1.0 then
+        return
+    end
+
+    vim.g.neovide_scale_factor = temp
+end
+
 M.config = function()
     if vim.g.neovide then
         vim.opt.guifont = "MonoLisa Nerd Font:h12"
@@ -31,9 +41,21 @@ M.config = function()
         vim.g.neovide_cursor_animate_command_line = false
         vim.g.neovide_cursor_unfocused_outline_width = 0.0
         vim.g.neovide_cursor_vfx_mode = ""
+        vim.g.neovide_input_use_logo = 1
 
         -- Remapping
-        vim.g.neovide_input_use_logo = 1
+        vim.api.nvim_set_keymap(
+            "n",
+            "<D-=>",
+            "<cmd>lua require('user.neovide').scale(0.1)<cr>",
+            { noremap = true, silent = true }
+        )
+        vim.api.nvim_set_keymap(
+            "n",
+            "<D-->",
+            "<cmd>lua require('user.neovide').scale(-0.1)<cr>",
+            { noremap = true, silent = true }
+        )
         vim.api.nvim_set_keymap("", "<D-v>", "+p<CR>", { noremap = true, silent = true })
         vim.api.nvim_set_keymap("", "<D-/>", "+p<CR>", { noremap = true, silent = true })
         vim.api.nvim_set_keymap("!", "<D-v>", "<C-R>+", { noremap = true, silent = true })
