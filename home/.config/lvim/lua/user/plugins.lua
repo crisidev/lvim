@@ -258,6 +258,14 @@ M.config = function()
                 }
             end,
         },
+        {
+            "abzcoding/lsp_lines.nvim",
+            lazy = true,
+            config = function()
+                require("lsp_lines").setup()
+            end,
+            enabled = lvim.builtin.lsp_lines,
+        },
         ------------------------------------------------------------------------------
         -- A/I
         ------------------------------------------------------------------------------

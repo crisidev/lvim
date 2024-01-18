@@ -38,11 +38,6 @@ M.config = function()
     lvim.builtin.gpt = { active = true }
     -- LSP Signature help
     lvim.builtin.lsp_signature_help = { active = true }
-    -- Atomatic inlay hints
-    lvim.builtin.automatic_inlay_hints = {
-        active = true,
-        ft = { "rust", "lua", "java", "typescript", "go", "c", "cpp" },
-    }
     -- Lir
     lvim.builtin.lir.active = false
     -- Breadcrumbs
@@ -73,6 +68,8 @@ M.config = function()
     lvim.builtin.symbols_usage = { active = true }
     -- Enable the status column
     lvim.builtin.statuscol = { active = false }
+    -- Enable lsp lines
+    lvim.builtin.lsp_lines = { active = true }
     -- Enable startup time
     lvim.builtin.startuptime = { active = false }
 

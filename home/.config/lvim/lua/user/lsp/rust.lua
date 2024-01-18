@@ -5,18 +5,6 @@ M.config = function()
         tools = {
             executor = require "rustaceanvim.executors.termopen", -- can be quickfix or termopen
             reload_workspace_from_cargo_toml = true,
-            inlay_hints = {
-                auto = not lvim.builtin.automatic_inlay_hints.active,
-                only_current_line = true,
-                show_parameter_hints = true,
-                parameter_hints_prefix = "in: ",
-                other_hints_prefix = " out: ",
-                max_len_align = false,
-                max_len_align_padding = 1,
-                right_align = false,
-                right_align_padding = 7,
-                highlight = "SpecialComment",
-            },
             hover_actions = {
                 border = {
                     { "╭", "FloatBorder" },
@@ -33,6 +21,9 @@ M.config = function()
         },
         server = {
             on_attach = function(client, bufnr)
+                if client.server_capabilities.inlayHintProvider then
+                    vim.lsp.inlay_hint.enable()
+                end
                 require("lvim.lsp").common_on_attach(client, bufnr)
             end,
             on_init = require("lvim.lsp").common_on_init,
@@ -48,12 +39,14 @@ M.config = function()
                     checkOnSave = {
                         enable = true,
                         command = "clippy",
+                        target = "x86_64-unknown-linux-gnu",
                     },
                     diagnostics = {
                         experimental = true,
                     },
                     cargo = {
                         features = "all",
+                        target = "x86_64-unknown-linux-gnu",
                     },
                 },
             },
@@ -93,8 +86,15 @@ M.build_tools = function()
     }
     local mappings = {
         K = { "<cmd>RustLsp externalDocs<cr>", icons.icons.docs .. "Open docs.rs" },
+        L = { "<cmd>RustLsp renderDiagnostic<cr>", icons.icons.hint .. "Show cargo diagnostic" },
         B = {
             name = icons.languages.rust .. " Build helpers",
+            A = {
+                name = "Rust analyzer",
+                s = { "<cmd>RustAnalyzer start<cr>", "Start" },
+                S = { "<cmd>RustAnalyzer stop<cr>", "Stop" },
+                r = { "<cmd>RustAnalyzer restart<cr>", "Restart" },
+            },
             a = { "<cmd>RustLsp hover actions<cr>", "Hover actions" },
             r = { "<cmd>RustLsp runnables<cr>", "Run targes" },
             R = { "<cmd>RustLsp debuggables<cr>", "Debug targes" },

@@ -80,6 +80,9 @@ M.config = function()
             workspace_dir,
         },
         on_attach = function(client, bufnr)
+            if client.server_capabilities.inlayHintProvider then
+                vim.lsp.inlay_hint.enable()
+            end
             local _, _ = pcall(vim.lsp.codelens.refresh)
             require("jdtls.dap").setup_dap_main_class_configs()
             require("jdtls").setup_dap { hotcodereplace = "auto" }

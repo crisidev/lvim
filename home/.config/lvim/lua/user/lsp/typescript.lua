@@ -128,6 +128,9 @@ M.config = function()
     _G.css_to_js = css_to_js
 
     local function on_attach(client, bufnr)
+        if client.server_capabilities.inlayHintProvider then
+            vim.lsp.inlay_hint.enable()
+        end
         require("lvim.lsp").common_on_attach(client, bufnr)
         api.nvim_buf_create_user_command(bufnr, "CssToJs", css_to_js, { range = true })
     end

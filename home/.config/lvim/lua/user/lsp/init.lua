@@ -85,6 +85,7 @@ M.config = function()
         "yamlls",
         "grammar_guard",
         "kotlin_language_server",
+        "marksman",
     })
     lvim.lsp.document_highlight = true
     lvim.lsp.code_lens_refresh = true

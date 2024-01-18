@@ -95,18 +95,6 @@ M.config = function()
         })
     end
 
-    -- Automatic inlay hints
-    if lvim.builtin.automatic_inlay_hints.active then
-        vim.api.nvim_create_autocmd("Filetype", {
-            group = "_lvim_user",
-            pattern = lvim.builtin.automatic_inlay_hints.ft,
-            desc = "Enable automatic inlay hints",
-            callback = function()
-                vim.lsp.inlay_hint.enable()
-            end,
-        })
-    end
-
     -- Faster yank
     vim.api.nvim_create_autocmd("TextYankPost", {
         group = "_general_settings",

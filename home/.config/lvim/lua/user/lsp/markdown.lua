@@ -1,7 +1,6 @@
 local M = {}
 
-M.config = function()
-    require("grammar-guard").init()
+M.grammar_guard = function()
     local ok, grammarguard = pcall(require, "grammar-guard")
     if ok then
         grammarguard.init()
@@ -41,6 +40,15 @@ M.config = function()
     if not status_ok then
         return
     end
+end
+
+M.marksman = function()
+    require("lspconfig").marksman.setup {}
+end
+
+M.config = function()
+    M.grammar_guard()
+    M.marksman()
 end
 
 return M
