@@ -117,12 +117,20 @@ M.config = function()
         callback = require("user.lsp.toml").build_tools,
     })
 
-    -- Rust
+    -- C/C++
     vim.api.nvim_create_autocmd("FileType", {
         group = "_build_tools",
         pattern = { "rust", "rs" },
         desc = "Set additional buffer keymaps for Rust files",
         callback = require("user.lsp.rust").build_tools,
+    })
+
+    -- Rust
+    vim.api.nvim_create_autocmd("FileType", {
+        group = "_build_tools",
+        pattern = { "c", "cpp" },
+        desc = "Set additional buffer keymaps for C/C++ files",
+        callback = require("user.lsp.c").build_tools,
     })
 
     -- Python

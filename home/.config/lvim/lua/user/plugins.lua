@@ -66,17 +66,23 @@ M.config = function()
         -- Telescope file browser
         {
             "nvim-telescope/telescope-file-browser.nvim",
+            dependencies = { "nvim-telescope/telescope.nvim" },
             lazy = true,
         },
         -- Telescope live grep
         {
             "nvim-telescope/telescope-live-grep-args.nvim",
+            dependencies = { "nvim-telescope/telescope.nvim" },
             lazy = true,
         },
         {
             "danielfalk/smart-open.nvim",
             branch = "0.2.x",
-            dependencies = { "kkharji/sqlite.lua", "nvim-telescope/telescope-fzy-native.nvim" },
+            dependencies = {
+                "kkharji/sqlite.lua",
+                "nvim-telescope/telescope-fzy-native.nvim",
+                "nvim-telescope/telescope.nvim",
+            },
             lazy = true,
         },
         ------------------------------------------------------------------------------

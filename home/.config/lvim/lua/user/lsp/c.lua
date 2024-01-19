@@ -22,7 +22,9 @@ M.config = function()
     local custom_on_attach = function(client, bufnr)
         require("lvim.lsp").common_on_attach(client, bufnr)
         require("clangd_extensions.inlay_hints").setup_autocmd()
-        require("clangd_extensions.inlay_hints").set_inlay_hints()
+        if client.server_capabilities.inlayHintProvider then
+            vim.lsp.inlay_hint.enable()
+        end
     end
 
     local status_ok, project_config = pcall(require, "rhel.clangd_wrl")
@@ -33,14 +35,6 @@ M.config = function()
     local custom_on_init = function(client, bufnr)
         require("lvim.lsp").common_on_init(client, bufnr)
         require("clangd_extensions.config").setup {}
-        -- require("clangd_extensions.ast").init()
-        vim.cmd [[
-  command ClangdToggleInlayHints lua require('clangd_extensions.inlay_hints').toggle_inlay_hints()
-  command -range ClangdAST lua require('clangd_extensions.ast').display_ast(<line1>, <line2>)
-  command ClangdTypeHierarchy lua require('clangd_extensions.type_hierarchy').show_hierarchy()
-  command ClangdSymbolInfo lua require('clangd_extensions.symbol_info').show_symbol_info()
-  command -nargs=? -complete=customlist,s:memuse_compl ClangdMemoryUsage lua require('clangd_extensions.memory_usage').show_memory_usage('<args>' == 'expand_preamble')
-  ]]
     end
 
     local opts = {
@@ -72,6 +66,30 @@ M.cmake_config = function()
             long = { show = true, max_length = 40 },
         },
     }
+end
+
+M.build_tools = function()
+    local which_key = require "which-key"
+    local icons = require "user.icons"
+    local opts = {
+        mode = "n",
+        prefix = "f",
+        buffer = vim.fn.bufnr(),
+        silent = true,
+        noremap = true,
+        nowait = true,
+    }
+    local mappings = {
+        B = {
+            name = icons.languages.c .. " Build helpers",
+            i = { "<cmd>ClangdSymbolInfo<cr>", "Symbol info" },
+            s = { "<cmd>ClangdSwitchSourceHeader<cr>", "Switch sorce/header" },
+            h = { "<cmd>ClangdTypeHierarchy<cr>", "Symbol info" },
+            m = { "<cmd>ClangdMemoryUsage<cr>", "Memory usage" },
+            a = { "<cmd>ClangdAST<cr>", "Show AST" },
+        },
+    }
+    which_key.register(mappings, opts)
 end
 
 return M
