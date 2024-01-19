@@ -35,7 +35,8 @@ M.kind = {
     Parameter = "",
     Property = " ",
     Reference = " ",
-    Snippet = " ", -- ""," "," "
+    Snippet = " ",
+    spell = "󰓆 ",
     StaticMethod = "",
     String = " ",
     Struct = "󰙅",
@@ -52,23 +53,23 @@ M.kind = {
 M.config = function()
     local cmp = require "cmp"
     lvim.builtin.cmp.sorting = {
-        priority_weight = 2,
+        priority_weight = 2.0,
         comparators = {
-            cmp.config.compare.offset,
-            cmp.config.compare.exact,
-            cmp.config.compare.score,
-            cmp.config.compare.recently_used,
             cmp.config.compare.locality,
+            cmp.config.compare.recently_used,
+            require "clangd_extensions.cmp_scores",
+            cmp.config.compare.score,
+            cmp.config.compare.offset,
+            cmp.config.compare.order,
             cmp.config.compare.kind,
             cmp.config.compare.length,
-            cmp.config.compare.order,
         },
     }
     lvim.builtin.cmp.sources = {
-        { name = "copilot", group_index = 1 },
-        { name = "luasnip", group_index = 1, max_item_count = 5, keyword_length = 3 },
         { name = "nvim_lsp", group_index = 1 },
+        { name = "copilot", group_index = 1 },
         { name = "nvim_lsp_signature_help", group_index = 1 },
+        { name = "luasnip", group_index = 1, max_item_count = 5, keyword_length = 3 },
         { name = "nvim_lua", group_index = 1 },
         { name = "buffer", group_index = 1, max_item_count = 5, keyword_length = 4 },
         { name = "path", group_index = 1 },
