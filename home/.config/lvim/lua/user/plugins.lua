@@ -723,6 +723,16 @@ M.config = function()
             event = "BufReadPost",
             enabled = lvim.builtin.tag_provider == "vista",
         },
+        -- Mind
+        {
+            "Selyss/mind.nvim",
+            dependencies = { "nvim-lua/plenary.nvim" },
+            config = function()
+                require("user.mind").config()
+            end,
+            event = "VeryLazy",
+            enabled = lvim.builtin.mind.active,
+        },
     }
 end
 

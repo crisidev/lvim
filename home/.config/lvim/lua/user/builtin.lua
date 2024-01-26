@@ -88,6 +88,9 @@ M.config = function()
     lvim.builtin.gitsigns.opts._extmark_signs = true
     lvim.builtin.gitsigns.opts.attach_to_untracked = false
     lvim.builtin.gitsigns.opts.current_line_blame_formatter = " <author>, <author_time> · <summary>"
+
+    -- Mind
+    lvim.builtin.mind = { active = true, root_path = "~/.mind" }
     -- Log level
     lvim.log.level = "warn"
 end
