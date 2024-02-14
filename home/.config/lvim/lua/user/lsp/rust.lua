@@ -30,23 +30,17 @@ M.config = function()
             capabilities = require("lvim.lsp").common_capabilities(),
             default_settings = {
                 ["rust-analyzer"] = {
-                    inlayHints = {
-                        locationLinks = false,
-                    },
-                    lens = {
-                        enable = true,
-                    },
                     checkOnSave = {
                         enable = true,
                         command = "clippy",
-                        target = "x86_64-unknown-linux-gnu",
+                        target = "aarch64-unknown-linux-musl",
                     },
                     diagnostics = {
                         experimental = true,
                     },
                     cargo = {
                         features = "all",
-                        target = "x86_64-unknown-linux-gnu",
+                        target = "aarch64-unknown-linux-musl",
                     },
                 },
             },

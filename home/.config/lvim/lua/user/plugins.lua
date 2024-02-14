@@ -449,7 +449,7 @@ M.config = function()
         },
         -- Spectre
         {
-            "windwp/nvim-spectre",
+            "nvim-pack/nvim-spectre",
             event = "BufRead",
             lazy = true,
             config = function()
