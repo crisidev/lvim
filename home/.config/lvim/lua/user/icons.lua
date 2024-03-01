@@ -222,6 +222,81 @@ M.define_dap_signs = function()
     )
 end
 
+M.set_icons = function()
+    require("nvim-web-devicons").set_icon {
+        toml = {
+            icon = "📦",
+            color = "#8FAA54",
+            name = "Toml",
+        },
+        rs = {
+            icon = "🦀",
+            color = "#d28445",
+            name = "Rust",
+        },
+        tf = {
+            icon = "",
+            color = "#3d59a1",
+            name = "Terraform",
+        },
+        tfvars = {
+            icon = "",
+            color = "#51afef",
+            name = "Terraform",
+        },
+        mod = {
+            icon = "",
+            color = "#6a9fb5",
+            name = "Mod",
+        },
+        sum = {
+            icon = "",
+            color = "#6a9fb5",
+            name = "Sum",
+        },
+        txt = {
+            icon = "",
+            color = "#bbc2cf",
+            name = "Text",
+        },
+        csv = {
+            icon = " ",
+            color = "#31B53E",
+            name = "CSV",
+        },
+        plist = {
+            icon = "",
+            color = "#8FAA54",
+            name = "Plist",
+        },
+        burp = {
+            icon = "",
+            color = "#F16529",
+            name = "Burp",
+        },
+        mp4 = {
+            icon = "",
+            color = "#5fd7ff",
+            name = "MP4",
+        },
+        mkv = {
+            icon = "",
+            color = "#5fd7ff",
+            name = "MKV",
+        },
+        hcl = {
+            icon = "",
+            color = "#689FB6",
+            name = "HCL",
+        },
+        sol = {
+            icon = "",
+            color = "#555555",
+            name = "Sol",
+        },
+    }
+end
+
 M.use_my_icons = function()
     for _, sign in ipairs(require("user.lsp").default_diagnostic_config.signs.values) do
         vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })

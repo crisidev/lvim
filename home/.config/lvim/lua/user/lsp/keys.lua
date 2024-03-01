@@ -52,7 +52,7 @@ M.lsp_normal_keys = function()
             },
             -- Diagnostics
             l = {
-                "<cmd>lua vim.diagnostic.open_float()<cr>",
+                "<cmd>lua vim.diagnostic.open_float({border = 'rounded', focusable = true})<cr>",
                 icons.hint .. "Show line diagnostics",
             },
             e = {
@@ -64,20 +64,24 @@ M.lsp_normal_keys = function()
                 icons.hint .. "Wordspace diagnostics",
             },
             N = {
-                "<cmd>lua vim.diagnostic.goto_next({float = {border = 'rounded', focusable = false, source = 'always'}, severity = {min = vim.diagnostic.severity.ERROR}})<cr>",
+                "<cmd>lua vim.diagnostic.goto_next({float = {border = 'rounded', focusable = true, source = 'always'}, severity = {min = vim.diagnostic.severity.ERROR}})<cr>",
                 icons.error .. "Next ERROR diagnostic",
             },
             P = {
-                "<cmd>lua vim.diagnostic.goto_prev({float = {border = 'rounded', focusable = false, source = 'always'}, severity = {min = vim.diagnostic.severity.ERROR}})<cr>",
+                "<cmd>lua vim.diagnostic.goto_prev({float = {border = 'rounded', focusable = true, source = 'always'}, severity = {min = vim.diagnostic.severity.ERROR}})<cr>",
                 icons.error .. "Previous ERROR diagnostic",
             },
             n = {
-                "<cmd>lua vim.diagnostic.goto_next({float = {border = 'rounded', focusable = false, source = 'always'}, severity = {min = vim.diagnostic.severity.WARN}})<cr>",
+                "<cmd>lua vim.diagnostic.goto_next({float = {border = 'rounded', focusable = true, source = 'always'}, severity = {min = vim.diagnostic.severity.WARN}})<cr>",
                 icons.warn .. "Next diagnostic",
             },
             p = {
-                "<cmd>lua vim.diagnostic.goto_prev({float = {border = 'rounded', focusable = false, source = 'always'}, severity = {min = vim.diagnostic.severity.WARN}})<cr>",
+                "<cmd>lua vim.diagnostic.goto_prev({float = {border = 'rounded', focusable = true, source = 'always'}, severity = {min = vim.diagnostic.severity.WARN}})<cr>",
                 icons.warn .. "Previous diagnostic",
+            },
+            s = {
+                "<cmd>lua vim.diagnostic.goto_next({float = {border = 'rounded', focusable = true, source = 'always'}, severity = {max = vim.diagnostic.severity.HINT}})<cr>",
+                icons.hint .. "Next typo",
             },
             -- Format
             F = {
@@ -169,7 +173,7 @@ M.lsp_normal_keys = function()
 
         wk.register {
             ["f"] = {
-                s = {
+                j = {
                     "<cmd>lua require('lsp_signature').toggle_float_win()<cr>",
                     icons.Function .. " Show signature help",
                 },
@@ -182,7 +186,7 @@ M.lsp_normal_keys = function()
 
         wk.register {
             ["f"] = {
-                s = {
+                j = {
                     "<cmd>lua vim.lsp.buf.signature_help()<cr>",
                     icons.Function .. " Show signature help",
                 },

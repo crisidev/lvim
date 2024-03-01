@@ -32,12 +32,6 @@ M.config = function()
             end,
             prefer_local = "node_modules/.bin",
         },
-        nls.builtins.formatting.eslint_d.with {
-            condition = function(utils)
-                return utils.root_has_file { ".eslintrc", ".eslintrc.js" }
-            end,
-            prefer_local = "node_modules/.bin",
-        },
         nls.builtins.formatting.stylua,
         nls.builtins.formatting.goimports,
         nls.builtins.formatting.gofumpt,
@@ -56,14 +50,6 @@ M.config = function()
         nls.builtins.formatting.black.with {
             extra_args = { "--fast", "--line-length=120" },
         },
-        -- nls.builtins.formatting.isort.with {
-        --     extra_args = { "--profile", "black", "-l", "120", "-m", "3", "-tc" },
-        -- },
-        nls.builtins.formatting.ruff.with {
-            condition = function(utils)
-                return utils.root_has_file { "ruff.toml", ".ruff.toml" }
-            end,
-        },
         nls.builtins.diagnostics.ansiblelint.with {
             condition = function(utils)
                 return (utils.root_has_file "roles" and utils.root_has_file "inventories")
@@ -76,24 +62,14 @@ M.config = function()
             end,
         },
         nls.builtins.diagnostics.hadolint,
-        nls.builtins.diagnostics.eslint_d.with {
-            condition = function(utils)
-                return utils.root_has_file { ".eslintrc", ".eslintrc.js" }
-            end,
-            prefer_local = "node_modules/.bin",
-        },
+        nls.builtins.diagnostics.selene,
         nls.builtins.diagnostics.semgrep.with {
             condition = function(utils)
                 return utils.root_has_file ".semgrepignore" and use_semgrep
             end,
             extra_args = { "--metrics", "off", "--exclude", "vendor", "--config", semgrep_rule_folder },
         },
-        nls.builtins.diagnostics.shellcheck,
-        nls.builtins.diagnostics.luacheck.with {
-            extra_args = { "--globals vim lvim" },
-        },
         nls.builtins.diagnostics.vint,
-        nls.builtins.diagnostics.chktex,
         -- Support for nix files
         nls.builtins.diagnostics.deadnix,
         nls.builtins.diagnostics.statix,
@@ -116,18 +92,7 @@ M.config = function()
                 d.end_lnum = d.lnum
             end,
         },
-        nls.builtins.diagnostics.ruff.with {
-            condition = function(utils)
-                return utils.root_has_file { "ruff.toml", ".ruff.toml" }
-            end,
-        },
-        nls.builtins.code_actions.shellcheck,
-        nls.builtins.code_actions.eslint_d.with {
-            condition = function(utils)
-                return utils.root_has_file { ".eslintrc", ".eslintrc.js" }
-            end,
-            prefer_local = "node_modules/.bin",
-        },
+        -- nls.builtins.code_actions.shellcheck,
         -- TODO: try these later on
         -- nls.builtins.formatting.google_java_format,
         -- nls.builtins.code_actions.proselint,

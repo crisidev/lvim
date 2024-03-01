@@ -733,6 +733,13 @@ M.config = function()
             event = "VeryLazy",
             enabled = lvim.builtin.mind.active,
         },
+        {
+            "abzcoding/nvim-mini-file-icons",
+            config = function()
+                require("nvim-web-devicons").setup()
+            end,
+            enabled = not lvim.use_icons,
+        },
     }
 end
 

@@ -34,6 +34,7 @@ M.default_diagnostic_config = {
         },
     },
     virtual_text = false,
+    update_in_insert = true,
     underline = true,
     severity_sort = true,
     float = {
@@ -86,18 +87,20 @@ M.config = function()
         "grammar_guard",
         "kotlin_language_server",
         "marksman",
+        "typos_lsp",
+        "dprint",
     })
     lvim.lsp.document_highlight = true
     lvim.lsp.code_lens_refresh = true
-
-    -- LSP lines
-    vim.diagnostic.config { virtual_lines = false }
 
     -- Setup diagnostics
     if lvim.builtin.lsp_lines then
         M.default_diagnostic_config.virtual_text = false
     end
     vim.diagnostic.config(M.default_diagnostic_config)
+
+    -- LSP lines
+    vim.diagnostic.config { virtual_lines = false, update_in_insert = true }
 
     local found, noice_util = pcall(require, "noice.util")
     if found and lvim.builtin.noice.active then
@@ -147,6 +150,7 @@ M.config = function()
     require("user.lsp.markdown").config()
     require("user.lsp.kotlin").config()
     require("user.lsp.rust").config()
+    require("user.lsp.typos").config()
 
     -- Mappings
     require("user.comment").config()

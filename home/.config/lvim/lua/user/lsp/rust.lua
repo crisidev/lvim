@@ -32,7 +32,7 @@ M.config = function()
                 ["rust-analyzer"] = {
                     checkOnSave = {
                         enable = true,
-                        command = "clippy",
+                        command = "check",
                         target = "aarch64-unknown-linux-musl",
                     },
                     diagnostics = {

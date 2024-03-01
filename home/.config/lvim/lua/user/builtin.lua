@@ -73,10 +73,13 @@ M.config = function()
     -- Enable startup time
     lvim.builtin.startuptime = { active = false }
 
+    -- Icons
+    lvim.use_icons = true
+    require("user.icons").use_my_icons()
+
     -- Mason
     lvim.builtin.mason.ui.icons = require("user.icons").mason
     lvim.builtin.treesitter_textobjects = { active = false }
-    lvim.builtin.mason.registries[3] = "lua:user.lsp.pylance"
 
     -- Dashboard
     lvim.builtin.alpha.active = true
