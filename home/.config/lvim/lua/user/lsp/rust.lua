@@ -35,6 +35,9 @@ M.config = function()
                         command = "check",
                         target = "aarch64-unknown-linux-musl",
                     },
+                    cachePriming = {
+                        enable = false,
+                    },
                     diagnostics = {
                         experimental = true,
                     },

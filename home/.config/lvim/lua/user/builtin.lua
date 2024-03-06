@@ -66,6 +66,8 @@ M.config = function()
     lvim.builtin.motion_provider = "none"
     -- Enable symbol usage
     lvim.builtin.symbols_usage = { active = true }
+    -- Enable bacon for Rust
+    lvim.builtin.bacon = { active = false }
     -- Enable the status column
     lvim.builtin.statuscol = { active = false }
     -- Enable lsp lines

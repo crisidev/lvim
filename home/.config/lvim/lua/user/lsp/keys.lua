@@ -2,6 +2,53 @@ local M = {}
 
 local icons = require("user.icons").icons
 
+M.diagnostics = function(direction, level)
+    local filetype = vim.bo.filetype
+    if lvim.builtin.bacon.active and filetype == "rust" then
+        vim.cmd.BaconLoad {}
+        vim.api.nvim_command(':w')
+        if direction == "next" then
+            vim.cmd.BaconNext {}
+        else
+            vim.cmd.BaconPrevious {}
+        end
+    else
+        if direction == "next" then
+            vim.diagnostic.goto_next {
+                float = { border = "rounded", focusable = true, source = "always" },
+                severity = { min = level },
+            }
+        else
+            vim.diagnostic.goto_prev {
+                float = { border = "rounded", focusable = true, source = "always" },
+                severity = { min = level },
+            }
+        end
+    end
+end
+
+M.show_line_diagnostics = function()
+    local filetype = vim.bo.filetype
+    if lvim.builtin.bacon.active and filetype == "rust" then
+        vim.cmd.BaconLoad {}
+        vim.api.nvim_command(':w')
+        vim.cmd.BaconShow {}
+    else
+        vim.diagnostic.open_float { border = "rounded", focusable = true }
+    end
+end
+
+M.show_diagnostics = function(type)
+    local filetype = vim.bo.filetype
+    if lvim.builtin.bacon.active and filetype == "rust" then
+        vim.cmd.BaconLoad {}
+        vim.api.nvim_command(':w')
+        vim.cmd.Trouble("quickfix")
+    else
+        vim.cmd.Trouble(type)
+    end
+end
+
 M.lsp_normal_keys = function()
     local ok, wk = pcall(require, "which-key")
     if not ok then
@@ -52,35 +99,35 @@ M.lsp_normal_keys = function()
             },
             -- Diagnostics
             l = {
-                "<cmd>lua vim.diagnostic.open_float({border = 'rounded', focusable = true})<cr>",
+                "<cmd>lua require('user.lsp.keys').show_line_diagnostics()<cr>",
                 icons.hint .. "Show line diagnostics",
             },
             e = {
-                "<cmd>Trouble document_diagnostics<cr>",
+                "<cmd>lua require('user.lsp.keys').show_diagnostics('document_diagnostics')<cr>",
                 icons.hint .. "Document diagnostics",
             },
             E = {
-                "<cmd>Trouble workspace_diagnostics<cr>",
+                "<cmd>lua require('user.lsp.keys').show_diagnostics('workspace_diagnostics')<cr>",
                 icons.hint .. "Wordspace diagnostics",
             },
             N = {
-                "<cmd>lua vim.diagnostic.goto_next({float = {border = 'rounded', focusable = true, source = 'always'}, severity = {min = vim.diagnostic.severity.ERROR}})<cr>",
+                "<cmd>lua require('user.lsp.keys').diagnostics('next', vim.diagnostic.severity.ERROR)<cr>",
                 icons.error .. "Next ERROR diagnostic",
             },
             P = {
-                "<cmd>lua vim.diagnostic.goto_prev({float = {border = 'rounded', focusable = true, source = 'always'}, severity = {min = vim.diagnostic.severity.ERROR}})<cr>",
+                "<cmd>lua require('user.lsp.keys').diagnostics('prev', vim.diagnostic.severity.ERROR)<cr>",
                 icons.error .. "Previous ERROR diagnostic",
             },
             n = {
-                "<cmd>lua vim.diagnostic.goto_next({float = {border = 'rounded', focusable = true, source = 'always'}, severity = {min = vim.diagnostic.severity.WARN}})<cr>",
+                "<cmd>lua require('user.lsp.keys').diagnostics('next', vim.diagnostic.severity.WARN)<cr>",
                 icons.warn .. "Next diagnostic",
             },
             p = {
-                "<cmd>lua vim.diagnostic.goto_prev({float = {border = 'rounded', focusable = true, source = 'always'}, severity = {min = vim.diagnostic.severity.WARN}})<cr>",
+                "<cmd>lua require('user.lsp.keys').diagnostics('prev', vim.diagnostic.severity.WARN)<cr>",
                 icons.warn .. "Previous diagnostic",
             },
             s = {
-                "<cmd>lua vim.diagnostic.goto_next({float = {border = 'rounded', focusable = true, source = 'always'}, severity = {max = vim.diagnostic.severity.HINT}})<cr>",
+                "<cmd>lua require('user.lsp.keys').diagnostics('next', vim.diagnostic.severity.HINT)<cr>",
                 icons.hint .. "Next typo",
             },
             -- Format

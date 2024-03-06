@@ -104,6 +104,20 @@ M.config = function()
             ft = { "rust", "rs" },
             lazy = true,
         },
+        {
+            "Canop/nvim-bacon",
+            ft = { "rust", "rs" },
+            config = function()
+                require("bacon").setup {
+                    quickfix = {
+                        enabled = true,
+                        event_trigger = true,
+                    },
+                }
+            end,
+            enabled = lvim.builtin.bacon.active,
+            lazy = true,
+        },
         -- Lsp java
         {
             "mfussenegger/nvim-jdtls",
@@ -698,22 +712,6 @@ M.config = function()
             "dstein64/vim-startuptime",
             enabled = lvim.builtin.startuptime.active,
         },
-        -- Compiler explorer
-        {
-            "krady21/compiler-explorer.nvim",
-            cmd = {
-                "CECompile",
-                "CECompileLive",
-                "CEFormat",
-                "CEAddLibrary",
-                "CELoadExample",
-                "CEOpenWebsite",
-                "CEDeleteCache",
-                "CEShowTooltip",
-                "CEGotoLabel",
-            },
-            event = "VeryLazy",
-        },
         -- Tags
         {
             "liuchengxu/vista.vim",
@@ -733,6 +731,7 @@ M.config = function()
             event = "VeryLazy",
             enabled = lvim.builtin.mind.active,
         },
+        -- File icons
         {
             "abzcoding/nvim-mini-file-icons",
             config = function()
