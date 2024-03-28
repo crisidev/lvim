@@ -34,6 +34,22 @@ M.config = function()
                         enable = true,
                         command = "check",
                         target = "aarch64-unknown-linux-musl",
+                        allTargets = false,
+                    },
+                    callInfo = {
+                        full = true,
+                    },
+                    lens = {
+                        enable = true,
+                        references = true,
+                        implementations = true,
+                        enumVariantReferences = true,
+                        methodReferences = true,
+                    },
+                    inlayHints = {
+                        enable = true,
+                        typeHints = true,
+                        parameterHints = true,
                     },
                     cachePriming = {
                         enable = false,
@@ -42,8 +58,19 @@ M.config = function()
                         experimental = true,
                     },
                     cargo = {
+                        autoreload = true,
                         features = "all",
                         target = "aarch64-unknown-linux-musl",
+                        buildScripts = {
+                            enable = true,
+                        },
+                    },
+                    hoverActions = {
+                        enable = true,
+                        references = true,
+                    },
+                    procMacro = {
+                        enable = true,
                     },
                 },
             },

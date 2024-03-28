@@ -13,6 +13,7 @@ M.root_files = {
     "Pipfile",
     "manage.py",
     "pyrightconfig.json",
+    "poetry.lock",
 }
 
 M.root_dir = function(fname)
@@ -20,9 +21,17 @@ M.root_dir = function(fname)
 end
 
 M.config_pyright = function()
-    -- Lsp config
-    local pyright_opts = {
+    local cmd = { "pyright-langserver", "--stdio" }
+    local match = vim.fn.glob(vim.fn.getcwd() .. "/poetry.lock")
+    if match ~= "" then
+        cmd = { "poetry", "run", "pyright-langserver", "--stdio" }
+    end
+    local opts = {
+        cmd = cmd,
         root_dir = M.root_dir,
+        on_attach = require("lvim.lsp").common_on_attach,
+        on_init = require("lvim.lsp").common_on_init,
+        capabilities = require("lvim.lsp").common_capabilities(),
         settings = {
             pyright = {
                 disableLanguageServices = false,
@@ -40,7 +49,25 @@ M.config_pyright = function()
         filetypes = { "python" },
     }
 
-    manager.setup("pyright", pyright_opts)
+    manager.setup("pyright", opts)
+end
+
+M.config_basedpyright = function()
+    local cmd = { "basedpyright-langserver", "--stdio" }
+    local match = vim.fn.glob(vim.fn.getcwd() .. "/poetry.lock")
+    if match ~= "" then
+        cmd = { "poetry", "run", "basedpyright-langserver", "--stdio" }
+    end
+    local opts = {
+        cmd = cmd,
+        root_dir = M.root_dir,
+        on_attach = require("lvim.lsp").common_on_attach,
+        on_init = require("lvim.lsp").common_on_init,
+        capabilities = require("lvim.lsp").common_capabilities(),
+        single_file_support = true,
+        filetypes = { "python" },
+    }
+    manager.setup("basedpyright", opts)
 end
 
 M.config_rufflsp = function()

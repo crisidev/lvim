@@ -16,6 +16,7 @@ M.config = function()
             vim.fn.glob(mason_path .. "/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar", true, true)[1]
     end
     local CONFIG = "linux"
+    local WORKSPACE_PATH = ""
     if vim.fn.has "mac" == 1 then
         CONFIG = "mac"
         WORKSPACE_PATH = home .. "/.cache/jdtls/workspace/"

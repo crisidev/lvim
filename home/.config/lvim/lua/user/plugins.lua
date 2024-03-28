@@ -660,6 +660,7 @@ M.config = function()
         { "nvim-neotest/neotest-go", event = { "BufEnter *.go" } },
         { "nvim-neotest/neotest-python", event = { "BufEnter *.py" } },
         { "rouge8/neotest-rust", event = { "BufEnter *.rs" } },
+        { "nvim-neotest/nvim-nio" },
         -- Hop
         {
             "phaazon/hop.nvim",
