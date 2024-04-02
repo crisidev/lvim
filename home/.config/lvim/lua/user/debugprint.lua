@@ -4,8 +4,11 @@ M.config = function()
     local debugprint = require "debugprint"
 
     debugprint.setup {
-        create_keymaps = true,
-        create_commands = true,
+        keymap = {},
+        commands = {
+            toggle_comment_debug_prints = "ToggleCommentDebugPrints",
+            delete_debug_prints = "DeleteDebugPrints",
+        },
         move_to_debugline = true,
         display_snippet = true,
         display_counter = true,
@@ -70,7 +73,6 @@ M.config = function()
         desc = "Text-obj-selected variable debug above current line",
     })
     vim.keymap.set("n", "f?d", function()
-        print("DBG[1]: debugprint.lua:73: deleteprints=" .. vim.inspect(debugprint))
         return debugprint.deleteprints()
     end, {
         desc = "Delete all debug lines",
