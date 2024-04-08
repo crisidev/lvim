@@ -47,6 +47,9 @@ M.config = function()
         nls.builtins.formatting.shfmt.with {
             extra_args = { "-i", "4", "-ci" },
         },
+        nls.builtins.formatting.isort.with {
+            extra_args = { "--profile=black" },
+        },
         nls.builtins.formatting.black.with {
             extra_args = { "--fast", "--line-length=120" },
         },
