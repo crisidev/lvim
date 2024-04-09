@@ -6,7 +6,7 @@ M.diagnostics = function(direction, level)
     local filetype = vim.bo.filetype
     if lvim.builtin.bacon.active and filetype == "rust" then
         vim.cmd.BaconLoad {}
-        vim.api.nvim_command(':w')
+        vim.api.nvim_command ":w"
         if direction == "next" then
             vim.cmd.BaconNext {}
         else
@@ -31,7 +31,7 @@ M.show_line_diagnostics = function()
     local filetype = vim.bo.filetype
     if lvim.builtin.bacon.active and filetype == "rust" then
         vim.cmd.BaconLoad {}
-        vim.api.nvim_command(':w')
+        vim.api.nvim_command ":w"
         vim.cmd.BaconShow {}
     else
         vim.diagnostic.open_float { border = "rounded", focusable = true }
@@ -42,8 +42,8 @@ M.show_diagnostics = function(type)
     local filetype = vim.bo.filetype
     if lvim.builtin.bacon.active and filetype == "rust" then
         vim.cmd.BaconLoad {}
-        vim.api.nvim_command(':w')
-        vim.cmd.Trouble("quickfix")
+        vim.api.nvim_command ":w"
+        vim.cmd.Trouble "quickfix"
     else
         vim.cmd.Trouble(type)
     end

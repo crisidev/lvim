@@ -64,6 +64,22 @@ M.config_basedpyright = function()
         on_attach = require("lvim.lsp").common_on_attach,
         on_init = require("lvim.lsp").common_on_init,
         capabilities = require("lvim.lsp").common_capabilities(),
+        settings = {
+            basedpyright = {
+                disableLanguageServices = false,
+                disableOrganizeImports = false,
+                disableTaggedHints = false,
+                openFilesOnly = false,
+                useLibraryCodeForTypes = true,
+                analysis = {
+                    autoImportCompletions = true,
+                    autoSearchPaths = true,
+                    diagnosticMode = "workspace",
+                    typeCheckingMode = "all",
+                    useLibraryCodeForTypes = true,
+                },
+            },
+        },
         single_file_support = true,
         filetypes = { "python" },
     }
@@ -95,11 +111,14 @@ M.build_tools = function()
             c = { "<cmd>lua require('dap-python').test_class()<cr>", "Test class" },
             m = { "<cmd>lua require('dap-python').test_method()<cr>", "Test method" },
             s = { "<cmd>lua require('dap-python').debug_selection()<cr>", "Debug selection" },
-            e = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Pick env" },
-            E = { "<cmd>lua require('swenv.api').get_current_venv()<cr>", "Show env" },
+            i = { "<cmd>PyrightOrganizeImports<cr>", "Organize imports" },
         },
     }
     which_key.register(mappings, opts)
+end
+
+M.config = function()
+    M.config_basedpyright()
 end
 
 return M

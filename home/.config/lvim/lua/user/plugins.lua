@@ -204,16 +204,6 @@ M.config = function()
             lazy = true,
             event = { "BufReadPre", "BufNew" },
         },
-        -- Python venv
-        {
-            "AckslD/swenv.nvim",
-            ft = "python",
-        },
-        -- Requirements
-        {
-            "raimon49/requirements.txt.vim",
-            event = "VeryLazy",
-        },
         -- Refactoring
         {
             "ThePrimeagen/refactoring.nvim",
