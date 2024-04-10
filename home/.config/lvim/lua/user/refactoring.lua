@@ -8,6 +8,7 @@ M.config = function()
             cpp = true,
             c = true,
             java = true,
+            python = true,
         },
         -- prompt for function parameters
         prompt_func_param_type = {
@@ -15,6 +16,7 @@ M.config = function()
             cpp = true,
             c = true,
             java = true,
+            python = true,
         },
     }
 end

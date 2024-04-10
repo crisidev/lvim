@@ -52,6 +52,71 @@ M.config_pyright = function()
     manager.setup("pyright", opts)
 end
 
+M.config_pylsp = function()
+    local cmd = { "pylsp" }
+    local match = vim.fn.glob(vim.fn.getcwd() .. "/poetry.lock")
+    if match ~= "" then
+        cmd = { "poetry", "run", "pylsp" }
+    end
+    local opts = {
+        cmd = cmd,
+        root_dir = M.root_dir,
+        on_attach = require("lvim.lsp").common_on_attach,
+        on_init = require("lvim.lsp").common_on_init,
+        capabilities = require("lvim.lsp").common_capabilities(),
+        settings = {
+            pylsp = {
+                plugins = {
+                    pycodestyle = {
+                        ignore = { "W391" },
+                        maxLineLength = 120,
+                    },
+                    jedi_completion = {
+                        enabled = false,
+                    },
+                },
+            },
+        },
+        single_file_support = true,
+        filetypes = { "python" },
+    }
+
+    manager.setup("pylsp", opts)
+end
+
+M.config_pylyzer = function()
+    local cmd = { "pylyzer", "--server" }
+    local match = vim.fn.glob(vim.fn.getcwd() .. "/poetry.lock")
+    if match ~= "" then
+        cmd = { "poetry", "run", "pylyzer", "--server" }
+    end
+    local opts = {
+        cmd = cmd,
+        root_dir = M.root_dir,
+        on_attach = function(client, bufnr)
+            if client.server_capabilities.inlayHintProvider then
+                vim.lsp.inlay_hint.enable()
+            end
+            require("lvim.lsp").common_on_attach(client, bufnr)
+        end,
+
+        on_init = require("lvim.lsp").common_on_init,
+        capabilities = require("lvim.lsp").common_capabilities(),
+
+        settings = {
+            python = {
+                checkOnType = false,
+                diagnostics = false,
+                inlayHints = true,
+                smartCompletion = true,
+            },
+        },
+        single_file_support = true,
+        filetypes = { "python" },
+    }
+    manager.setup("pylyzer", opts)
+end
+
 M.config_basedpyright = function()
     local cmd = { "basedpyright-langserver", "--stdio" }
     local match = vim.fn.glob(vim.fn.getcwd() .. "/poetry.lock")
@@ -118,7 +183,11 @@ M.build_tools = function()
 end
 
 M.config = function()
+    -- M.config_pylyzer()
+    -- M.config_pyright()
     M.config_basedpyright()
+    -- M.config_pylsp()
+    -- M.config_rufflsp()
 end
 
 return M

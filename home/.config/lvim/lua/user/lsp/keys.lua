@@ -384,10 +384,15 @@ M.lsp_visual_keys = function()
                 "<cmd>lua vim.lsp.buf.rename()<cr>",
                 icons.magic .. "Rename symbol",
             },
-            -- Range code actions
+            -- Code actions
             a = {
-                "<cmd>lua vim.lsp.buf.range_code_action()<cr>",
+                "<cmd>lua vim.lsp.buf.code_action()<cr>",
                 icons.code_lens_action .. "Code actions",
+            },
+            -- Range code actions
+            A = {
+                "<cmd>lua vim.lsp.buf.range_code_action()<cr>",
+                icons.code_lens_action .. "Range code actions",
             },
         },
     }, { mode = "v" })

@@ -81,6 +81,8 @@ M.config = function()
         "jdtls",
         "pyright",
         "basedpyright",
+        "pylsp",
+        "pylyzer",
         "ruff-lsp",
         "rust_analyzer",
         "tsserver",

@@ -410,6 +410,7 @@ M.config = function()
         telescope.load_extension "file_browser"
         telescope.load_extension "persisted"
         telescope.load_extension "smart_open"
+        telescope.load_extension "refactoring"
     end
 end
 
