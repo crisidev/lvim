@@ -141,8 +141,8 @@ M.lsp_normal_keys = function()
                 icons.rename .. "Rename symbol",
             },
             x = {
-                "<cmd>execute '!open ' . shellescape(expand('<cfile>'), 1)<cr>",
-                icons.world .. "Open URL",
+                "<cmd>lua require('lsplinks').gx()<cr>",
+                icons.world .. "Open link",
             },
             -- Peek
             z = {

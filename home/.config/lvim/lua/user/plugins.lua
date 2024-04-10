@@ -206,6 +206,12 @@ M.config = function()
         },
         -- Refactoring
         {
+            "icholy/lsplinks.nvim",
+            init = function()
+                require("lsplinks").setup()
+            end,
+        },
+        {
             "ThePrimeagen/refactoring.nvim",
             ft = { "typescript", "javascript", "lua", "c", "cpp", "go", "python", "java", "rust", "kotlin" },
             lazy = true,
