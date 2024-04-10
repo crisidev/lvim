@@ -99,10 +99,8 @@ M.config_pylyzer = function()
             end
             require("lvim.lsp").common_on_attach(client, bufnr)
         end,
-
         on_init = require("lvim.lsp").common_on_init,
         capabilities = require("lvim.lsp").common_capabilities(),
-
         settings = {
             python = {
                 checkOnType = false,
@@ -154,6 +152,15 @@ end
 M.config_rufflsp = function()
     local ruff_opts = {
         root_dir = M.root_dir,
+        on_attach = function(client, bufnr)
+            if client.name == 'ruff_lsp' then
+                -- client.server_capabilities.hoverProvider = false
+                client.server_capabilities.documentFormattingProvider = false
+            end
+            require("lvim.lsp").common_on_attach(client, bufnr)
+        end,
+        on_init = require("lvim.lsp").common_on_init,
+        capabilities = require("lvim.lsp").common_capabilities(),
         single_file_support = true,
         filetypes = { "python" },
     }
@@ -187,7 +194,7 @@ M.config = function()
     -- M.config_pyright()
     M.config_basedpyright()
     -- M.config_pylsp()
-    -- M.config_rufflsp()
+    M.config_rufflsp()
 end
 
 return M

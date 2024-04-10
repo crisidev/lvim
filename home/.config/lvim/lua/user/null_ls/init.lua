@@ -65,7 +65,7 @@ M.config = function()
 
         -- Hover
         nls.builtins.hover.dictionary,
-        nls.builtins.hover.printenv,
+        -- nls.builtins.hover.printenv,
     }
     local ts_found, typescript_code_actions = pcall(require, "typescript.extensions.null-ls.code-actions")
     if ts_found then
