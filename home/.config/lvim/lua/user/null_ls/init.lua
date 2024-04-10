@@ -10,6 +10,8 @@ M.config = function()
     local sources = {
         -- Completion
         nls.builtins.completion.luasnip,
+        nls.builtins.completion.spell,
+
         -- Formatting
         nls.builtins.formatting.prettier,
         nls.builtins.formatting.stylua,
@@ -57,6 +59,7 @@ M.config = function()
         },
         nls.builtins.code_actions.gitrebase,
         nls.builtins.code_actions.gitsigns,
+        nls.builtins.code_actions.impl,
         custom_go_actions.gomodifytags,
         custom_go_actions.gostructhelper,
 
