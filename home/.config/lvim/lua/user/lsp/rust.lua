@@ -33,8 +33,8 @@ M.config = function()
                     checkOnSave = {
                         enable = true,
                         command = "check",
-                        target = "aarch64-unknown-linux-musl",
-                        allTargets = false,
+                        -- target = "aarch64-unknown-linux-musl",
+                        -- allTargets = false,
                     },
                     callInfo = {
                         full = true,
@@ -60,7 +60,7 @@ M.config = function()
                     cargo = {
                         autoreload = true,
                         features = "all",
-                        target = "aarch64-unknown-linux-musl",
+                        -- target = "aarch64-unknown-linux-musl",
                         buildScripts = {
                             enable = true,
                         },

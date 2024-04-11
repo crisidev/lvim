@@ -207,7 +207,7 @@ M.config = function()
         -- Refactoring
         {
             "icholy/lsplinks.nvim",
-            init = function()
+            config = function()
                 require("lsplinks").setup()
             end,
         },
