@@ -8,10 +8,6 @@ M.config = function()
     local custom_go_actions = require "user.null_ls.go"
 
     local sources = {
-        -- Completion
-        nls.builtins.completion.luasnip,
-        nls.builtins.completion.spell,
-
         -- Formatting
         nls.builtins.formatting.prettier,
         nls.builtins.formatting.stylua,

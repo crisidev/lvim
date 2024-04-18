@@ -471,7 +471,7 @@ M.config = function()
             for _, client in pairs(buf_clients) do
                 if
                     not (
-                        client.name == "copilot"
+                        client.name == "GitHub Copilot"
                         or client.name == "null-ls"
                         or client.name == "typos_lsp"
                         or client.name == "ruff"
