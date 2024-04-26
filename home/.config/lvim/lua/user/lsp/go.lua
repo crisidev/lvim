@@ -46,7 +46,7 @@ M.config = function()
         },
         on_attach = function(client, bufnr)
             if client.server_capabilities.inlayHintProvider then
-                vim.lsp.inlay_hint.enable()
+                vim.lsp.inlay_hint.enable(true)
             end
             require("lvim.lsp").common_on_attach(client, bufnr)
             local _, _ = pcall(vim.lsp.codelens.refresh)

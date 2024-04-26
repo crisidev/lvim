@@ -27,7 +27,7 @@ M.start = function()
     metals_config.capabilities = require("lvim.lsp").common_capabilities()
     metals_config.on_attach = function(client, bufnr)
         if client.server_capabilities.inlayHintProvider then
-            vim.lsp.inlay_hint.enable()
+            vim.lsp.inlay_hint.enable(true)
         end
         require("lvim.lsp").common_on_attach(client, bufnr)
         metals.setup_dap()

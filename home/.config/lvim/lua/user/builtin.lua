@@ -57,7 +57,6 @@ M.config = function()
     lvim.builtin.global_statusline = true
     -- Cmpline
     lvim.builtin.cmp.cmdline.enable = true
-    lvim.builtin.cmp.dictionary = { enable = false }
     -- Big file management
     lvim.builtin.bigfile.active = true
     -- Scala

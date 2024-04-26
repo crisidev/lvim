@@ -64,7 +64,7 @@ M.toggle_inlay_hints = function(buf, value)
         if value == nil then
             value = not ih.is_enabled(buf)
         end
-        ih.enable(buf, value)
+        ih.enable(value)
     end
 end
 
@@ -75,23 +75,25 @@ M.config = function()
     -- Disabled server
     -- Remember to run :LvimCacheReset if you change this list.
     vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
-        "clangd",
-        "gopls",
-        "golangci_lint_ls",
-        "jdtls",
-        "pyright",
         "basedpyright",
-        "pylsp",
-        "pylyzer",
-        "ruff-lsp",
-        "rust_analyzer",
-        "tsserver",
-        "yamlls",
+        "clangd",
+        "dprint",
+        "golangci_lint_ls",
+        "gopls",
         "grammar_guard",
+        "jdtls",
         "kotlin_language_server",
         "marksman",
+        "pylsp",
+        "pylyzer",
+        "pyright",
+        "ruff",
+        "ruff-lsp",
+        "rust_analyzer",
+        "snyk_ls",
+        "tsserver",
         "typos_lsp",
-        "dprint",
+        "yamlls",
     })
     lvim.lsp.document_highlight = true
     lvim.lsp.code_lens_refresh = true

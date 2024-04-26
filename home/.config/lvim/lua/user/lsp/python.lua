@@ -36,9 +36,12 @@ M.config_pyright = function()
             pyright = {
                 disableLanguageServices = false,
                 disableOrganizeImports = false,
+                disableTaggedHints = false,
             },
             python = {
                 analysis = {
+                    autoImportCompletions = true,
+                    typeCheckingMode = "strict",
                     autoSearchPaths = true,
                     diagnosticMode = "workspace",
                     useLibraryCodeForTypes = true,
@@ -95,7 +98,7 @@ M.config_pylyzer = function()
         root_dir = M.root_dir,
         on_attach = function(client, bufnr)
             if client.server_capabilities.inlayHintProvider then
-                vim.lsp.inlay_hint.enable()
+                vim.lsp.inlay_hint.enable(true)
             end
             require("lvim.lsp").common_on_attach(client, bufnr)
         end,
@@ -138,7 +141,7 @@ M.config_basedpyright = function()
                     autoImportCompletions = true,
                     autoSearchPaths = true,
                     diagnosticMode = "workspace",
-                    typeCheckingMode = "all",
+                    typeCheckingMode = "strict",
                     useLibraryCodeForTypes = true,
                 },
             },
@@ -153,7 +156,7 @@ M.config_rufflsp = function()
     local ruff_opts = {
         root_dir = M.root_dir,
         on_attach = function(client, bufnr)
-            if client.name == 'ruff_lsp' then
+            if client.name == "ruff_lsp" then
                 -- client.server_capabilities.hoverProvider = false
                 client.server_capabilities.documentFormattingProvider = false
             end
@@ -190,11 +193,11 @@ M.build_tools = function()
 end
 
 M.config = function()
+    M.config_basedpyright()
     -- M.config_pylyzer()
     -- M.config_pyright()
-    M.config_basedpyright()
     -- M.config_pylsp()
-    M.config_rufflsp()
+    -- M.config_rufflsp()
 end
 
 return M

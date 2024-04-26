@@ -51,6 +51,7 @@ M.config = function()
         references = { enabled = true, include_declaration = false },
         definition = { enabled = true },
         implementation = { enabled = true },
+        disable = { filetypes = { "sh" } },
     }
 end
 

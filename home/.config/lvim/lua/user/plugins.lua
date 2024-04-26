@@ -207,7 +207,7 @@ M.config = function()
         -- Refactoring
         {
             "icholy/lsplinks.nvim",
-            config = function()
+            init = function()
                 require("lsplinks").setup()
             end,
         },
@@ -326,24 +326,8 @@ M.config = function()
         ------------------------------------------------------------------------------
         -- Cmp all the things.
         ------------------------------------------------------------------------------
-        -- Cmp for command line
-        -- Cmp for emojis..
         { "hrsh7th/cmp-emoji" },
         { "hrsh7th/cmp-nvim-lsp" },
-        {
-            "uga-rosa/cmp-dictionary",
-            config = function()
-                require("cmp_dictionary").setup {
-                    dic = {
-                        ["markdown"] = { "/usr/share/dict/words", "/usr/share/dict/british-english" },
-                        ["rst"] = { "/usr/share/dict/words", "/usr/share/dict/british-english" },
-                        ["*"] = {},
-                    },
-                }
-            end,
-            enabled = lvim.builtin.cmp.dictionary.enable,
-        },
-        -- Cmp for github/gitlab issues
         {
             "petertriho/cmp-git",
             dependencies = "nvim-lua/plenary.nvim",
@@ -353,7 +337,12 @@ M.config = function()
         },
         {
             "hrsh7th/cmp-nvim-lsp-signature-help",
-            enabled = not lvim.builtin.lsp_signature_help.active,
+            enabled = lvim.builtin.lsp_signature_help.active,
+        },
+        {
+            "vrslev/cmp-pypi",
+            dependencies = { "nvim-lua/plenary.nvim" },
+            ft = "toml",
         },
         ------------------------------------------------------------------------------
         -- Markdown support

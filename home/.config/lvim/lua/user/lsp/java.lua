@@ -82,7 +82,7 @@ M.config = function()
         },
         on_attach = function(client, bufnr)
             if client.server_capabilities.inlayHintProvider then
-                vim.lsp.inlay_hint.enable()
+                vim.lsp.inlay_hint.enable(true)
             end
             local _, _ = pcall(vim.lsp.codelens.refresh)
             require("jdtls.dap").setup_dap_main_class_configs()
