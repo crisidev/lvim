@@ -387,11 +387,11 @@ M.python = function()
 end
 
 M.rust = function()
-    if vim.fn.executable "lldb-vscode" == 1 then
+    if vim.fn.executable "lldb-dap" == 1 then
         dap.adapters.lldbrust = {
             type = "executable",
             attach = { pidProperty = "pid", pidSelect = "ask" },
-            command = "lldb-vscode",
+            command = "lldb-dap",
             env = { LLDB_LAUNCH_FLAG_LAUNCH_IN_TTY = "YES" },
         }
         dap.adapters.rust = dap.adapters.lldbrust
@@ -419,7 +419,7 @@ M.rust = function()
             },
         }
     else
-        vim.notify("please install lldb-vscode to enable rust debugging", vim.log.levels.WARN)
+        vim.notify("please install lldb-dap to enable rust debugging", vim.log.levels.WARN)
     end
 end
 

@@ -175,6 +175,15 @@ M.config = function()
         desc = "Set additional buffer keymaps for Kotlin files",
         callback = require("user.lsp.kotlin").build_tools,
     })
+
+    -- Gitlab CI
+    vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+        pattern = ".gitlab*",
+        desc = "Set the proper filetype for Gitlab CI",
+        callback = function()
+            vim.bo.filetype = "yaml.gitlab"
+        end,
+    })
 end
 
 return M

@@ -725,6 +725,15 @@ M.config = function()
             end,
             enabled = not lvim.use_icons,
         },
+        -- Code coverage
+        {
+            "andythigpen/nvim-coverage",
+            dependencies = { "nvim-lua/plenary.nvim" },
+            config = function()
+                require("coverage").setup()
+            end,
+        },
+        { "Glench/Vim-Jinja2-Syntax" },
     }
 end
 

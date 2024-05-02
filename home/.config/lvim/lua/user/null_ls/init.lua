@@ -6,6 +6,7 @@ M.config = function()
         return
     end
     local custom_go_actions = require "user.null_ls.go"
+    local home = vim.env.HOME
 
     local sources = {
         -- Formatting
@@ -23,9 +24,11 @@ M.config = function()
             extra_args = { "-i", "4", "-ci" },
         },
         nls.builtins.formatting.isort.with {
+            command = home .. "/.bin/poetry-isort",
             extra_args = { "--profile=black" },
         },
         nls.builtins.formatting.black.with {
+            command = home .. "/.bin/poetry-black",
             extra_args = { "--fast", "--line-length=120" },
         },
 

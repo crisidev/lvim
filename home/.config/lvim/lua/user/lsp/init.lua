@@ -78,6 +78,7 @@ M.config = function()
         "basedpyright",
         "clangd",
         "dprint",
+        "gitlab_ci_ls",
         "golangci_lint_ls",
         "gopls",
         "grammar_guard",
@@ -155,6 +156,7 @@ M.config = function()
     require("user.lsp.kotlin").config()
     require("user.lsp.rust").config()
     require("user.lsp.typos").config()
+    require("lspconfig").gitlab_ci_ls.setup {}
 
     -- Mappings
     require("user.comment").config()

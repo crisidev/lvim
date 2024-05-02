@@ -59,7 +59,7 @@ M.config = function()
     table.insert(lvim.builtin.cmp.sources, { name = "pypi", keyword_length = 4 })
 
     lvim.builtin.cmp.experimental = {
-        ghost_text = true,
+        ghost_text = false,
     }
     local cmp_border = {
         { "╭", "CmpBorder" },

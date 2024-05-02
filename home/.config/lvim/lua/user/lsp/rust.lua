@@ -20,7 +20,12 @@ M.config = function()
             },
         },
         server = {
-            on_attach = require("lvim.lsp").common_on_attach,
+            on_attach = function(client, bufnr)
+                if client.server_capabilities.inlayHintProvider then
+                    vim.lsp.inlay_hint.enable(true)
+                end
+                require("lvim.lsp").common_on_attach(client, bufnr)
+            end,
             on_init = require("lvim.lsp").common_on_init,
             capabilities = require("lvim.lsp").common_capabilities(),
             default_settings = {
