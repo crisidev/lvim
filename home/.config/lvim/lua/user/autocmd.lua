@@ -34,11 +34,17 @@ M.config = function()
     })
 
     -- Codelense viewer
+    vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
+        group = "_lvim_user",
+        pattern = { "*.rs", "*.c", "*.cpp", "*.go", "*.ts", "*.tsx", "*.py", "*.pyi", "*.java" },
+        desc = "Refresh codelens",
+        callback = vim.lsp.codelens.refresh,
+    })
     vim.api.nvim_create_autocmd("CursorHold", {
         group = "_lvim_user",
         pattern = { "*.rs", "*.c", "*.cpp", "*.go", "*.ts", "*.tsx", "*.py", "*.pyi", "*.java" },
-        desc = "Enable and refresh codelens",
-        command = "lua require('user.codelens').show_line_sign()",
+        desc = "Show codelens indicator",
+        callback = require("user.codelens").show_line_sign,
     })
 
     -- Terminal
@@ -46,7 +52,7 @@ M.config = function()
         group = "_lvim_user",
         pattern = "term://*",
         desc = "Set terminal keymappings",
-        command = "lua require('user.keys').terminal_keys()",
+        callback = require("user.keys").terminal_keys,
     })
 
     vim.api.nvim_create_autocmd("BufWinEnter", {

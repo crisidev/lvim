@@ -97,7 +97,6 @@ M.config = function()
         "yamlls",
     })
     lvim.lsp.document_highlight = true
-    lvim.lsp.code_lens_refresh = true
 
     -- Setup diagnostics
     if lvim.builtin.lsp_lines then

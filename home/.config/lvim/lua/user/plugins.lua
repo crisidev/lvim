@@ -100,9 +100,8 @@ M.config = function()
         -- Lsp Rust
         {
             "mrcjkb/rustaceanvim",
-            version = "^3",
-            ft = { "rust", "rs" },
-            lazy = true,
+            version = "^4",
+            lazy = false,
         },
         {
             "Canop/nvim-bacon",
@@ -635,16 +634,16 @@ M.config = function()
                 require("user.ntest").config()
             end,
             dependencies = {
+                "nvim-neotest/nvim-nio",
                 "nvim-lua/plenary.nvim",
-                "nvim-treesitter/nvim-treesitter",
                 "antoinemadec/FixCursorHold.nvim",
+                "nvim-treesitter/nvim-treesitter",
             },
-            event = { "BufReadPost", "BufNew" },
         },
         { "nvim-neotest/neotest-plenary" },
-        { "nvim-neotest/neotest-go", event = { "BufEnter *.go" } },
-        { "nvim-neotest/neotest-python", event = { "BufEnter *.py" } },
-        { "rouge8/neotest-rust", event = { "BufEnter *.rs" } },
+        { "nvim-neotest/neotest-go" },
+        { "nvim-neotest/neotest-python" },
+        { "rouge8/neotest-rust" },
         { "nvim-neotest/nvim-nio" },
         -- Hop
         {
@@ -734,6 +733,14 @@ M.config = function()
             end,
         },
         { "Glench/Vim-Jinja2-Syntax" },
+        {
+            "wookayin/semshi",
+            ft = "python",
+            build = ":UpdateRemotePlugins",
+            init = function()
+                require("user.semshi").config()
+            end,
+        },
     }
 end
 

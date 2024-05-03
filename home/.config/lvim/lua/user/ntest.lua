@@ -41,6 +41,7 @@ M.config = function()
             border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
         },
         adapters = {
+            -- require('rustaceanvim.neotest')
             require "neotest-rust",
             require "neotest-go" {
                 experimental = {

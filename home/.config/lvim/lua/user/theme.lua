@@ -295,29 +295,6 @@ M.telescope_theme = function(colorset)
     link("LspDiagnosticsSignInfo", "DiagnosticInfo")
     link("NeoTreeDirectoryIcon", "NvimTreeFolderIcon")
     link("IndentBlanklineIndent1 ", "@comment")
-    -- link("@lsp.type.decorator", "@function")
-    -- link("@lsp.type.enum", "@type")
-    -- link("@lsp.type.enumMember", "@constant")
-    -- link("@lsp.type.function", "@function")
-    -- link("@lsp.type.interface", "@interface")
-    -- link("@lsp.type.keyword", "@keyword")
-    -- link("@lsp.type.macro", "@macro")
-    -- link("@lsp.type.method", "@method")
-    -- link("@lsp.type.namespace", "@namespace")
-    -- link("@lsp.type.parameter", "@parameter")
-    -- link("@lsp.type.property", "@property")
-    -- link("@lsp.type.struct", "@structure")
-    -- link("@lsp.type.variable", "@variable")
-    -- link("@lsp.type.class", "@type")
-    -- link("@lsp.type.type", "@type")
-    -- link("@lsp.typemod.function.defaultLibrary", "Special")
-    -- link("@lsp.typemod.variable.defaultLibrary", "@variable.builtin")
-    -- -- link("@lsp.typemod.variable.global", "@constant.builtin")
-    -- link("@lsp.typemod.operator", "@operator")
-    -- link("@lsp.typemod.string", "@string")
-    -- link("@lsp.typemod.variable", "@variable")
-    -- link("@lsp.typemod.parameter.label", "@field")
-    -- link("@type.qualifier", "@keyword")
     local current_colors = colorset
     if colorset == nil or #colorset == 0 then
         current_colors = M.current_colors()
@@ -359,7 +336,15 @@ M.telescope_theme = function(colorset)
         set_fg_bg("TelescopeResultsTitle", hi_colors.bg, hi_colors.bg)
         set_fg_bg("TelescopeResultsBorder", hi_colors.bg, hi_colors.bg)
         set_bg("TelescopeSelection", hi_colors.bg_alt)
-    else
+    end
+
+    local bg = vim.api.nvim_get_hl(0, { name = "StatusLine" }).bg
+    local hl = vim.api.nvim_get_hl(0, { name = "Folded" })
+    hl.bg = bg
+    vim.api.nvim_set_hl(0, "Folded", hl)
+    vim.opt.foldtext = [[luaeval('HighlightedFoldtext')()]]
+
+    if not lvim.builtin.telescope.active then
         set_fg_bg("FzfLuaBorder", hi_colors.bg, hi_colors.bg)
         set_bg("FzfLuaNormal", hi_colors.bg)
         set_fg_bg("FzfLuaTitle", hi_colors.bg, hi_colors.red)
@@ -369,6 +354,7 @@ M.telescope_theme = function(colorset)
         set_fg_bg("FzfLuaScrollBorderFull", hi_colors.bg, hi_colors.bg)
         set_fg_bg("FzfLuaHelpNormal", hi_colors.bg_alt, hi_colors.bg)
     end
+
     if lvim.builtin.symbols_usage.active then
         local function h(name)
             return vim.api.nvim_get_hl(0, { name = name })
