@@ -36,13 +36,13 @@ M.config = function()
     -- Codelense viewer
     vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
         group = "_lvim_user",
-        pattern = { "*.rs", "*.c", "*.cpp", "*.go", "*.ts", "*.tsx", "*.py", "*.pyi", "*.java" },
+        pattern = { "rust", "c", "cpp", "go", "typescript", "java" },
         desc = "Refresh codelens",
         callback = vim.lsp.codelens.refresh,
     })
     vim.api.nvim_create_autocmd("CursorHold", {
         group = "_lvim_user",
-        pattern = { "*.rs", "*.c", "*.cpp", "*.go", "*.ts", "*.tsx", "*.py", "*.pyi", "*.java" },
+        pattern = { "*" },
         desc = "Show codelens indicator",
         callback = require("user.codelens").show_line_sign,
     })
